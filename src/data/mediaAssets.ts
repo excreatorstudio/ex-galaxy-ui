@@ -1,0 +1,4 @@
+import type { MediaAsset } from '../types'
+export const mediaAssets: MediaAsset[] = [
+  { id: 'exterior', name: 'Exterior.mp4', type: 'VIDEO', duration: '00:12', accent: '#7597e8' }, { id: 'living', name: 'LivingRoom.mp4', type: 'VIDEO', duration: '00:09', accent: '#b18ac8' }, { id: 'kitchen', name: 'Kitchen.mp4', type: 'VIDEO', duration: '00:07', accent: '#6278af' }, { id: 'bedroom', name: 'Bedroom.mp4', type: 'VIDEO', duration: '00:08', accent: '#8d7ed4' }, { id: 'drone', name: 'Drone.mp4', type: 'VIDEO', duration: '00:09', accent: '#78b3ce' }, { id: 'voice', name: 'Voice.wav', type: 'AUDIO', duration: '00:45', accent: '#78c4e7' }, { id: 'music', name: 'CinematicBGM.mp3', type: 'AUDIO', duration: '03:12', accent: '#a882ec' }, { id: 'logo', name: 'Logo.png', type: 'LOGO', duration: '—', accent: '#d9e6ff' },
+]

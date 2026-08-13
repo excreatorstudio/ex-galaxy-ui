@@ -1,0 +1,178 @@
+.galaxy-launch-button {
+  position: relative;
+  z-index: 25;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 8px 10px;
+  color: #edf1ff;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: .16em;
+  line-height: 1;
+  text-align: left;
+  pointer-events: auto;
+  touch-action: manipulation;
+  transition: filter .18s ease, letter-spacing .18s ease, transform .12s ease;
+}
+
+.galaxy-launch-button span { font-weight: 300; }
+.galaxy-launch-button:hover { filter: brightness(1.12); letter-spacing: .17em; }
+.galaxy-launch-button:active { transform: scale(.98); }
+.galaxy-launch-button:focus-visible { outline: 1px solid #d8e9ff; outline-offset: 4px; border-radius: 4px; }
+
+.module-wordmark {
+  position: fixed;
+  top: 24px;
+  left: 3.2vw;
+  z-index: 25;
+  pointer-events: auto;
+}
+
+.module-focus .back-button { left: calc(3.2vw + 154px); }
+
+/* Idle has one central entry control: restrained glass lettering, never a title card. */
+.galaxy-idle-entry {
+  position: relative;
+  z-index: 12;
+  display: grid;
+  place-items: center;
+  min-width: min(82vw, 540px);
+  min-height: 154px;
+  gap: 11px;
+  padding: 20px 28px;
+  overflow: visible;
+  color: rgba(205, 219, 255, .42);
+  text-align: center;
+  isolation: isolate;
+  pointer-events: auto;
+  touch-action: manipulation;
+  animation: idle-glass-breathe 6.2s ease-in-out infinite;
+  transition: filter .32s ease, transform .16s ease;
+}
+
+.galaxy-idle-entry strong {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  margin-left: .34em;
+  color: transparent;
+  font-size: clamp(30px, 4.8vw, 76px);
+  font-weight: 350;
+  letter-spacing: .34em;
+  line-height: 1;
+  white-space: nowrap;
+  background: linear-gradient(160deg, rgba(242, 248, 255, .5) 0%, rgba(177, 204, 249, .36) 31%, rgba(217, 198, 255, .28) 55%, rgba(104, 140, 204, .22) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  filter: drop-shadow(0 1px 0 rgba(11, 23, 55, .76));
+  text-shadow: 0 1px 0 rgba(5, 12, 31, .7);
+  transition: filter .32s ease, transform .32s ease;
+}
+
+.galaxy-idle-entry strong::before,
+.galaxy-idle-entry strong::after {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  content: attr(data-wordmark);
+  pointer-events: none;
+}
+
+.galaxy-idle-entry strong::before {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(218, 234, 255, .34);
+  text-shadow: 0 -1px 0 rgba(239, 248, 255, .23), 0 1px 0 rgba(16, 31, 76, .78);
+  opacity: .78;
+}
+
+.galaxy-idle-entry strong::after {
+  z-index: -2;
+  color: rgba(98, 135, 204, .18);
+  transform: translateY(1px);
+  filter: blur(1.5px);
+}
+
+.idle-entry-kicker,
+.galaxy-idle-entry small,
+.galaxy-idle-entry em,
+.galaxy-idle-entry i {
+  position: relative;
+  z-index: 1;
+  font-style: normal;
+  letter-spacing: .2em;
+}
+
+.idle-entry-kicker { color: rgba(180, 199, 238, .38); font-size: 8px; }
+.galaxy-idle-entry small { color: rgba(174, 192, 230, .31); font-size: 8px; }
+.galaxy-idle-entry i { color: rgba(205, 224, 255, .42); font-size: 16px; line-height: .5; }
+.galaxy-idle-entry em { color: rgba(196, 212, 245, .43); font-size: 8px; }
+
+.galaxy-idle-entry::before {
+  position: absolute;
+  top: 50%;
+  left: 18%;
+  z-index: -1;
+  width: 64%;
+  height: 1px;
+  content: '';
+  opacity: 0;
+  background: linear-gradient(90deg, transparent, rgba(228, 240, 255, .44), rgba(181, 178, 255, .26), transparent);
+  filter: blur(.25px);
+  transform: translateY(-50%) scaleX(.45);
+  transition: opacity .32s ease, transform .48s cubic-bezier(.16, 1, .3, 1);
+}
+
+.galaxy-idle-entry:hover,
+.galaxy-idle-entry:focus-visible { filter: brightness(1.16); }
+.galaxy-idle-entry:hover strong,
+.galaxy-idle-entry:focus-visible strong { filter: brightness(1.28) drop-shadow(0 0 9px rgba(180, 210, 255, .2)); transform: scale(1.01); }
+.galaxy-idle-entry:hover::before,
+.galaxy-idle-entry:focus-visible::before { opacity: 1; transform: translateY(-50%) scaleX(1); }
+.galaxy-idle-entry:active { transform: scale(.985); }
+.galaxy-idle-entry:focus-visible { outline: 1px solid rgba(214, 232, 255, .74); outline-offset: 7px; border-radius: 8px; }
+
+/* A full-screen card plane is visual-only; only its cards receive interaction. */
+.interface .topbar { z-index: 24; pointer-events: auto; }
+.interface .floating-cards { pointer-events: none; }
+.interface .floating-cards .media-card { pointer-events: auto; }
+
+@keyframes idle-glass-breathe {
+  0%, 100% { opacity: .78; }
+  50% { opacity: .93; }
+}
+
+.motion-off .galaxy-idle-entry,
+.reduce-motion .galaxy-idle-entry { animation: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .galaxy-idle-entry { animation: none; }
+}
+
+@media (max-width: 560px) {
+  .galaxy-idle-entry { min-width: min(90vw, 390px); min-height: 104px; gap: 8px; padding: 16px 18px; }
+  .galaxy-idle-entry strong { font-size: clamp(25px, 8vw, 38px); letter-spacing: .27em; margin-left: .27em; }
+  .idle-entry-kicker, .galaxy-idle-entry small, .galaxy-idle-entry em { font-size: 7px; }
+  .galaxy-idle-entry i { font-size: 13px; }
+  .module-wordmark { top: 12px; left: 12px; }
+}
+
+/* Override the legacy generic Idle button rules without changing other controls. */
+.idle-intro .galaxy-idle-entry {
+  position: relative;
+  bottom: auto;
+  left: auto;
+  display: grid;
+  gap: 11px;
+  color: rgba(205, 219, 255, .42);
+  letter-spacing: normal;
+  transform: none;
+}
+
+.idle-intro .galaxy-idle-entry:hover { transform: none; filter: brightness(1.16); }
+.idle-intro .galaxy-idle-entry:active { transform: scale(.985); }
+.idle-intro .galaxy-idle-entry .idle-entry-kicker { margin: 0; color: rgba(180, 199, 238, .38); font-size: 8px; letter-spacing: .2em; animation: none; }
+.idle-intro .galaxy-idle-entry small { display: inline; margin: 0; color: rgba(174, 192, 230, .31); font-size: 8px; letter-spacing: .2em; }
+.idle-intro .galaxy-idle-entry em { color: rgba(196, 212, 245, .43); font-size: 8px; letter-spacing: .2em; }

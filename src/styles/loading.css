@@ -1,0 +1,6 @@
+@keyframes loadingDrift{to{background-position:71px -71px,-82px 113px}}
+@keyframes loadingText{from{opacity:0;letter-spacing:.35em}}
+
+@media(max-width:560px){
+  .loading-mark{width:82px;height:82px}.loading-mark strong{font-size:16px}.loading-copy{margin-top:22px}.loading-copy p{font-size:8px}.loading-copy b{min-width:0;font-size:7px}.loading-progress{width:190px}
+}

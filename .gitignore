@@ -1,0 +1,21 @@
+# Dependencies, build output, and local tooling caches
+node_modules/
+dist/
+.vite/
+coverage/
+tmp/
+*.tsbuildinfo
+*.log
+
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Local-only reference and recovery artifacts
+releases/*.zip
+references/
