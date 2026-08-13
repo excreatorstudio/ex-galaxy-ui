@@ -98,13 +98,30 @@ describe('Video Studio Creative Orbit activation', () => {
     act(() => root.unmount())
   })
 
-  it('uses the reduced functional asset set for Video Studio without the home composite', () => {
+  it('isolates Video Studio from the Hero composite while retaining the independent functional layers', () => {
     const host = document.createElement('div'); const root = createRoot(host)
-    enterVideoStudio(); act(() => root.render(<VideoStudio/>))
+    enterVideoStudio(); act(() => root.render(<GalaxyScene/>))
+    expect(host.querySelector('.galaxy-scene')?.className).toContain('galaxy-scene--video-studio')
+    expect(host.querySelector('.galaxy-home-composite')).not.toBeNull()
+    act(() => root.unmount())
+    const videoRoot = createRoot(host); act(() => videoRoot.render(<VideoStudio/>))
     expect(host.querySelectorAll('.video-studio-scene i')).toHaveLength(5)
     expect(host.querySelector('.video-studio-scene')?.getAttribute('style')).toContain('galaxy-background-base.png')
     expect(host.querySelector('.video-studio-scene')?.getAttribute('style')).not.toContain('galaxy-home-master-composite.png')
     expect(host.querySelector('.video-studio-scene')?.getAttribute('style')).not.toContain('galaxy-master-composite.png')
+    act(() => videoRoot.unmount())
+  })
+
+  it('keeps the Hero composite available outside Video Studio', () => {
+    const host = document.createElement('div'); const root = createRoot(host)
+    const store = useGalaxyStore.getState(); store.completeLoading(); store.awaken()
+    act(() => root.render(<GalaxyScene/>))
+    expect(host.querySelector('.galaxy-scene')?.className).not.toContain('galaxy-scene--video-studio')
+    expect(host.querySelector('.galaxy-home-composite')).not.toBeNull()
+    store.focus('brain')
+    act(() => root.render(<GalaxyScene/>))
+    expect(host.querySelector('.galaxy-scene')?.className).toContain('module-focus')
+    expect(host.querySelector('.galaxy-scene')?.className).not.toContain('galaxy-scene--video-studio')
     act(() => root.unmount())
   })
 })

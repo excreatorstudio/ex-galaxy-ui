@@ -15,7 +15,7 @@
 .galaxy-scene.awakened:not(.galaxy-scene--video-studio) .nebula,.galaxy-scene.module-focus:not(.galaxy-scene--video-studio) .nebula{opacity:.16}
 .galaxy-scene.awakened:not(.galaxy-scene--video-studio) .star-layer.far,.galaxy-scene.module-focus:not(.galaxy-scene--video-studio) .star-layer.far{opacity:.22}
 .galaxy-scene.awakened:not(.galaxy-scene--video-studio) .star-layer.near,.galaxy-scene.module-focus:not(.galaxy-scene--video-studio) .star-layer.near{opacity:.34}
-.galaxy-scene--video-studio .galaxy-home-composite,.galaxy-scene--video-studio .galaxy-home-visuals{display:none}
+.galaxy-scene.galaxy-scene--video-studio .galaxy-home-composite,.galaxy-scene.galaxy-scene--video-studio .galaxy-home-visuals{display:none;opacity:0;visibility:hidden}
 .galaxy-scene--video-studio .galaxy-asset-base{opacity:.08;filter:brightness(.38) saturate(.36)}
 .galaxy-scene--video-studio .nebula{opacity:.06}.galaxy-scene--video-studio .star-layer.far{opacity:.11}.galaxy-scene--video-studio .star-layer.near{opacity:.15}
 .galaxy-scene--video-studio .galaxy-core,.galaxy-scene--video-studio .orbit-system,.galaxy-scene--video-studio .focus-grid{opacity:.12;filter:brightness(.4) saturate(.35)}
