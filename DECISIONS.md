@@ -1,5 +1,11 @@
 # Decisions
 
+## 2026-08-14 - Orbit imagery is a static guide; energy flow is SVG-only
+
+`galaxy-orbit-rings.png` may not receive a rotation, translation, or scale animation. The image supplies only fixed orbit geometry, planets, and chain detail. A scene-qualified SVG overlay shares its 1672×941 coordinate space and `xMidYMid slice` fitting, providing separate curved paths for moving dash tracers, energy packets, and path-bound sparks. This eliminates the visible rectangular bitmap footprint while preserving the supplied artwork and all scene opacity contracts.
+
+Homepage owns six paths/five sparks at full restrained energy; Idle owns five paths/three sparks at 62% path intensity; Video Studio owns five paths/three sparks at 42% intensity. At 560px and below CSS renders four paths/two sparks with reduced stroke/glow cost. Motion Off and Reduced Motion hide the overlay rather than freezing an attention-grabbing bright segment. Core animation, source mappings, transition timing, and Mobile scene policy are unaffected.
+
 ## 2026-08-14 - Idle entry uses the supplied master composite as the visible primary source
 
 Idle retains its intentionally small stack: deep-space/procedural fallback, `galaxy-master-composite`, quiet stars/atmosphere, and the accessible DOM entry control. The completed master image is preloaded from the document head during the existing 4.2-second Loading phase; loading duration and phase timing remain unchanged. The composite is not replaced by, or mixed with, the Homepage eight-layer stack.

@@ -3,11 +3,11 @@ import { motion } from 'framer-motion'
 import { galaxyConfig, workflowSteps } from '../../config/galaxyConfig'
 import { galaxyVisualAssets, resolveGalaxyAssetUrl } from '../../config/galaxyVisualAssets'
 import { getCoreActivationTiming } from '../../config/coreActivationConfig'
-import { orbitMotion } from '../../config/orbitMotion'
 import { mediaAssets } from '../../data/mediaAssets'
 import { useI18n } from '../../i18n'
 import { useGalaxyStore } from '../../state/useGalaxyStore'
 import { ProjectCoreActivationController } from './ProjectCoreActivationController'
+import { GalaxyOrbitMotionOverlay } from '../galaxy/GalaxyOrbitMotionOverlay'
 
 const nodes = [
   { name: 'VIDEO', kind: 'video', icon: 'V', x: 18, y: 28 }, { name: 'AUDIO', kind: 'audio', icon: 'A', x: 79, y: 25 },
@@ -73,9 +73,10 @@ export function VideoStudio() {
     <div className="video-studio-scene" data-asset-stack="video-studio" data-asset-layers="base,nebula,orbits,stars,atmosphere" style={sceneStyle} aria-hidden="true">
       <i className="video-studio-scene__base" data-asset-layer="base"/>
       <i className="video-studio-scene__nebula" data-asset-layer="nebula"/>
-      <i className="video-studio-scene__orbits video-studio-orbit-motion" data-asset-layer="orbits" data-orbit-motion="video-studio" style={{ '--orbit-rotation-duration': `${orbitMotion.videoStudio.rotationSeconds}s` } as CSSProperties}/>
+      <i className="video-studio-scene__orbits" data-asset-layer="orbits" data-orbit-structure="static"/>
       <i className="video-studio-scene__stars" data-asset-layer="stars"/>
       <i className="video-studio-scene__atmosphere" data-asset-layer="atmosphere"/>
+      <GalaxyOrbitMotionOverlay scene="video-studio" motionOff={motionOff}/>
     </div>
     <header className="studio-header"><div><p>{t('video.header')}</p><h2>{t('video.title')}</h2></div><div className="workflow-readout"><span>{stepText}</span><b>{progress}%</b></div></header>
     <div className="workflow-space">

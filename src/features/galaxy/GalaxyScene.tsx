@@ -2,9 +2,9 @@ import { useEffect, useMemo, useRef, type CSSProperties } from 'react'
 import { galaxyConfig } from '../../config/galaxyConfig'
 import { galaxySceneAssetMapping, galaxyVisualAssets, resolveGalaxyAssetUrl, type GalaxySceneAssetKey } from '../../config/galaxyVisualAssets'
 import { moduleDefinitions } from '../../config/moduleDefinitions'
-import { orbitMotion } from '../../config/orbitMotion'
 import { useI18n } from '../../i18n'
 import { useGalaxyStore } from '../../state/useGalaxyStore'
+import { GalaxyOrbitMotionOverlay } from './GalaxyOrbitMotionOverlay'
 
 const seeded = (seed: number) => { const x = Math.sin(seed * 987.13) * 43758.5453; return x - Math.floor(x) }
 
@@ -39,17 +39,19 @@ export function GalaxyScene() {
       <i className="galaxy-idle-stars" data-asset-layer="stars"/>
       <i className="galaxy-idle-atmosphere" data-asset-layer="atmosphere"/>
     </div>}
+    {isIdle && <GalaxyOrbitMotionOverlay scene="idle" motionOff={motionOff}/>}
     {isHomepage && <>
       <div className="galaxy-home-composite" data-asset-layer="home" data-scene-role="homepage"/>
       <div className="galaxy-home-visuals" data-asset-stack="homepage" data-asset-layers={homeLayers.join(',')}>
         <i className="galaxy-visual-nebula" data-asset-layer="nebula"/>
-        <i className="galaxy-visual-orbits galaxy-orbit-motion" data-asset-layer="orbits" data-orbit-motion="homepage" style={{ '--orbit-rotation-duration': `${orbitMotion.homepage.rotationSeconds}s`, '--orbit-sweep-duration': `${orbitMotion.homepage.sweepSeconds}s`, '--orbit-glint-duration': `${orbitMotion.homepage.glintSeconds}s` } as CSSProperties}><span className="orbit-light-sweep"/><span className="orbit-glints"/></i>
+        <i className="galaxy-visual-orbits" data-asset-layer="orbits" data-orbit-structure="static"/>
         <i className="galaxy-visual-core-glow" data-asset-layer="coreGlow"/>
         <i className="galaxy-visual-core-particles" data-asset-layer="coreParticles"/>
         <i className="galaxy-visual-ex-outline" data-asset-layer="exOutline"/>
         <i className="galaxy-visual-stars" data-asset-layer="stars"/>
         <i className="galaxy-visual-atmosphere" data-asset-layer="atmosphere"/>
       </div>
+      <GalaxyOrbitMotionOverlay scene="homepage" motionOff={motionOff}/>
     </>}
     <div className="nebula nebula-a"/><div className="nebula nebula-b"/><div className="star-layer far">{stars.map((star, i) => <i key={i} className="star" style={{ '--x': `${star.x}%`, '--y': `${star.y}%`, '--s': `${star.size}px`, '--d': `${star.delay}s`, '--t': `${star.duration}s`, '--c': star.hue } as CSSProperties}/>)}</div>
     <div className="star-layer near">{stars.slice(0, Math.floor(stars.length / 3)).map((star, i) => <i key={i} className="star" style={{ '--x': `${(star.x + 17) % 100}%`, '--y': `${(star.y + 43) % 100}%`, '--s': `${star.size + 1}px`, '--d': `${star.delay}s`, '--t': `${star.duration + 2}s`, '--c': star.hue } as CSSProperties}/>)}</div>

@@ -44,7 +44,6 @@
 .video-studio-scene__base { background-image: var(--video-studio-asset-base); opacity: .2; filter: brightness(.4) saturate(.4); }
 .video-studio-scene__nebula { background-image: var(--video-studio-asset-nebula); opacity: .09; mix-blend-mode: screen; filter: brightness(.52) saturate(.34); }
 .video-studio-scene__orbits { background-image: var(--video-studio-asset-orbits); opacity: .17; mix-blend-mode: screen; filter: brightness(.68) saturate(.42); }
-.video-studio-orbit-motion { transform-origin: 50% 50%; will-change: transform; animation: videoStudioOrbitRotation var(--orbit-rotation-duration, 126s) linear infinite; }
 .video-studio-scene__stars { background-image: var(--video-studio-asset-stars); opacity: .09; mix-blend-mode: screen; filter: brightness(.55) saturate(.3); }
 .video-studio-scene__atmosphere { background-image: var(--video-studio-asset-atmosphere); opacity: .045; filter: brightness(.46) saturate(.25); }
 .video-studio > :not(.video-studio-scene) { position: relative; z-index: 1; }
@@ -54,15 +53,9 @@
   .video-studio-scene__base { opacity: .16; }
   .video-studio-scene__nebula { opacity: .06; }
   .video-studio-scene__orbits { opacity: .12; }
-  .video-studio-orbit-motion { --orbit-rotation-duration: 136s !important; }
   .video-studio-scene__stars { opacity: .06; }
   .video-studio-scene__atmosphere { opacity: .03; }
 }
-
-.motion-off .video-studio-orbit-motion,
-.reduce-motion .video-studio-orbit-motion { animation: none; }
-
-@keyframes videoStudioOrbitRotation { to { transform: rotate(360deg); } }
 
 /* Showcase covers retain the original card-art gradient as a visual fallback and place readability above image detail. */
 .media-card .card-art { isolation: isolate; background: linear-gradient(145deg, #111b35, #13244b 48%, #09101f); }

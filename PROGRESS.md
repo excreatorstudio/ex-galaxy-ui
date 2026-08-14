@@ -1,5 +1,13 @@
 # Progress
 
+## E.X Galaxy v1.2.0-showcase - True orbit energy motion pass - 2026-08-14
+
+**Status: COMPLETE LOCALLY / PUBLIC REDEPLOY PENDING**
+
+- Removed every full-bitmap rotation from `galaxy-orbit-rings.png`; supplied orbit artwork is now a fixed structural guide in Homepage and Video Studio, while Idle preserves the static completed master composite.
+- Added a shared SVG `GalaxyOrbitMotionOverlay`: Homepage uses six independent elliptical energy paths, Idle uses five at restrained intensity, and Video Studio uses five at the lowest intensity. Tracers move by staggered dash offsets in opposing directions, with short energy packets and path-bound SMIL sparks rather than a rectangular conic sweep.
+- Mobile retains four visible paths and two sparks at 390px, 430px, and 560px. Motion Off / Reduced Motion hides the overlay entirely while keeping all static artwork, Core behavior, scene balance, and timing unchanged.
+
 ## E.X Galaxy v1.2.0-showcase - Idle entry visual source fix - 2026-08-14
 
 **Status: COMPLETE LOCALLY / PREVIEW AND PUBLIC REDEPLOY PENDING**

@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.0-showcase - True orbit energy motion pass - 2026-08-14
+
+- Replaced the Homepage and Video Studio full-bitmap orbit rotations with a shared SVG energy overlay; supplied orbit artwork now remains entirely static.
+- Added six distinct scene-aligned curved paths with independently staggered 18/23/29/35/42/51-second opposing tracer flows, short pulse packets, and low-count path-bound sparks. Idle, Homepage, Video Studio, and Mobile each use separate intensity/count limits.
+- Removed the rectangular conic sweep and fixed glint field. Motion Off and Reduced Motion retain static Galaxy artwork without any energy animation.
+
 ## 1.2.0-showcase - Idle entry visual source fix - 2026-08-14
 
 - Promoted the supplied Idle `galaxy-master-composite` through an Idle-only image treatment and further lowered procedural core/orbit fallback visibility, without changing any Homepage, Video Studio, Orbit, Core, or timing contracts.

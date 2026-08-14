@@ -1,5 +1,13 @@
 # Task Register
 
+## v1.2.0-showcase True orbit energy motion pass - Complete locally
+
+- [x] Removed full-image orbit rotation from Homepage and Video Studio; static source imagery retains unchanged scene balance values.
+- [x] Added scene-scoped SVG energy paths, staggered clockwise/counter-clockwise tracer flow, path-bound sparks, and restrained energy-packet pulses.
+- [x] Added Idle motion at lower intensity, Video Studio motion at lowest intensity, and a four-path/two-spark Mobile tier without a bitmap rotation fallback.
+- [x] Verified lint, tests, production build, diff hygiene, Desktop scene contracts, and 390px/430px/560px Mobile limits locally.
+- [ ] Complete final iPhone subjective cadence review after public redeployment: energy reads as attached to static star chains, never as a rotating rectangle.
+
 ## v1.2.0-showcase Idle entry visual source fix - Complete locally
 
 - [x] Verified the Idle `galaxy-master-composite` DOM path, canonical URL, visibility, z-index, and low procedural fallback stack.
