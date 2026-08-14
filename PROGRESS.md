@@ -1,5 +1,13 @@
 # Progress
 
+## E.X Galaxy v1.2.0-showcase - Idle entry visual source fix - 2026-08-14
+
+**Status: COMPLETE LOCALLY / PREVIEW AND PUBLIC REDEPLOY PENDING**
+
+- Verified that the Idle entry composite was already rendered from the canonical public source at z-index 2, but its effective `0.86 × brightness(.70)` treatment made the supplied master artwork read as the old procedural scene. Idle now keeps the same composite opacity while raising only its image treatment to `brightness(.84) saturate(.86) contrast(.97)`; the mobile treatment is `0.82 × brightness(.78) saturate(.82) contrast(.96)`.
+- Added a document-head image preload for `./assets/galaxy/reference/galaxy-master-composite.png`, so the completed entry artwork begins loading during the fixed 4.2-second Loading phase without changing its timer. Procedural core and orbit fallbacks are reduced further, and the real interactive entry remains with a small foreground offset to avoid a hard wordmark double-image.
+- No Homepage, Orbit, Video Studio, Core, transition, scroll, Presentation, i18n, or release workflow behavior changed. Automated and browser-preview validation remain required before redeployment.
+
 ## E.X Galaxy v1.2.0-showcase - Orbit Motion and Project Cover Brightness Polish - 2026-08-14
 
 **Status: COMPLETE LOCALLY / PREVIEW AND PUBLIC REDEPLOY PENDING**

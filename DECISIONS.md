@@ -1,5 +1,11 @@
 # Decisions
 
+## 2026-08-14 - Idle entry uses the supplied master composite as the visible primary source
+
+Idle retains its intentionally small stack: deep-space/procedural fallback, `galaxy-master-composite`, quiet stars/atmosphere, and the accessible DOM entry control. The completed master image is preloaded from the document head during the existing 4.2-second Loading phase; loading duration and phase timing remain unchanged. The composite is not replaced by, or mixed with, the Homepage eight-layer stack.
+
+The source artwork already contains a faint E.X wordmark. The DOM button remains the sole interactive brand control, but receives a restrained foreground offset so both wordmarks read as image atmosphere plus invitation rather than a duplicate title. Procedural core/orbit elements stay present only as low-opacity failure-safe context and cannot become the primary Idle visual when the image loads.
+
 ## 2026-08-14 - Orbit life and cover visibility stay layer-scoped
 
 `galaxy-orbit-rings.png` remains the only Homepage ring artwork. Its fixed-center 88-second linear rotation is paired with a masked cold-light sweep and a three-point glint field, so no duplicate orbit image, position drift, or global scene exposure is introduced. Mobile retains only the slower rotation plus a dim sweep; glints are removed. Video Studio has a separate 126-second structural rotation and no Hero sweep/glints. Motion Off and Reduced Motion stop all of these loops.

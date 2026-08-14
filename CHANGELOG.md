@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.0-showcase - Idle entry visual source fix - 2026-08-14
+
+- Promoted the supplied Idle `galaxy-master-composite` through an Idle-only image treatment and further lowered procedural core/orbit fallback visibility, without changing any Homepage, Video Studio, Orbit, Core, or timing contracts.
+- Added a relative document-head preload for the Idle master artwork so Loading-to-Idle can present the completed source immediately while retaining the fixed 4200ms loading duration and GitHub Pages-compatible asset path.
+- Kept the interactive DOM Entry and gently separated it from the artwork's embedded wordmark to avoid a hard double-title reading.
+
 ## 1.2.0-showcase - Orbit Motion and Project Cover Brightness Polish - 2026-08-14
 
 - Added slow fixed-center motion to the supplied Homepage orbit layer, with a restrained masked cold-light sweep and limited glint field; Video Studio receives a slower structural rotation only, and Idle remains unchanged.

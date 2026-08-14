@@ -98,7 +98,7 @@
 
 .galaxy-scene.idle .galaxy-entry-composite {
   opacity: .86;
-  filter: brightness(.7) saturate(.72) contrast(.96);
+  filter: brightness(.84) saturate(.86) contrast(.97);
 }
 
 .galaxy-scene.idle .galaxy-home-composite,
@@ -111,8 +111,8 @@
 .galaxy-scene.idle .nebula { opacity: .035; animation: none; }
 .galaxy-scene.idle .star-layer.far { opacity: .08; }
 .galaxy-scene.idle .star-layer.near { opacity: .11; }
-.galaxy-scene.idle .galaxy-core { opacity: .08; filter: brightness(.36) saturate(.3); }
-.galaxy-scene.idle .orbit-system { opacity: .08; filter: brightness(.38) saturate(.34); }
+.galaxy-scene.idle .galaxy-core { opacity: .045; filter: brightness(.36) saturate(.3); }
+.galaxy-scene.idle .orbit-system { opacity: .045; filter: brightness(.38) saturate(.34); }
 
 /* Awakened and non-Video Module Focus use the supplied home artwork plus the
  * complete transparent core-visual stack. Values are intentionally restrained
@@ -261,8 +261,8 @@
   }
 
   .galaxy-scene.idle .galaxy-entry-composite {
-    opacity: .8;
-    filter: brightness(.64) saturate(.68) contrast(.95);
+    opacity: .82;
+    filter: brightness(.78) saturate(.82) contrast(.96);
   }
 
   .galaxy-scene.idle .galaxy-idle-stars { opacity: .06; }

@@ -176,3 +176,33 @@
 .idle-intro .galaxy-idle-entry .idle-entry-kicker { margin: 0; color: rgba(180, 199, 238, .38); font-size: 8px; letter-spacing: .2em; animation: none; }
 .idle-intro .galaxy-idle-entry small { display: inline; margin: 0; color: rgba(174, 192, 230, .31); font-size: 8px; letter-spacing: .2em; }
 .idle-intro .galaxy-idle-entry em { color: rgba(196, 212, 245, .43); font-size: 8px; letter-spacing: .2em; }
+
+/* The entry composite has a faint wordmark of its own. The DOM control stays
+ * central and interactive, but is offset as a foreground invitation instead
+ * of reading as a second, identical title. */
+.galaxy-scene.idle ~ .idle-intro .galaxy-idle-entry {
+  opacity: .82;
+  transform: translateY(clamp(42px, 6vh, 68px));
+}
+
+.galaxy-scene.idle ~ .idle-intro .galaxy-idle-entry:hover {
+  transform: translateY(clamp(42px, 6vh, 68px)) scale(1.018);
+}
+
+.galaxy-scene.idle ~ .idle-intro .galaxy-idle-entry:active {
+  transform: translateY(clamp(42px, 6vh, 68px)) scale(.985);
+}
+
+@media (max-width: 560px) {
+  .galaxy-scene.idle ~ .idle-intro .galaxy-idle-entry {
+    transform: translateY(7vh);
+  }
+
+  .galaxy-scene.idle ~ .idle-intro .galaxy-idle-entry:hover {
+    transform: translateY(7vh) scale(1.012);
+  }
+
+  .galaxy-scene.idle ~ .idle-intro .galaxy-idle-entry:active {
+    transform: translateY(7vh) scale(.985);
+  }
+}

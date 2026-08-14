@@ -1,5 +1,8 @@
 import { describe, expect, it } from 'vitest'
 import { galaxySceneAssetMapping, galaxyVisualAssets, resolveGalaxyAssetUrl } from '../config/galaxyVisualAssets'
+import { galaxyConfig } from '../config/galaxyConfig'
+import { isMobileHomepageScrollEnabled } from '../config/mobileScenePolicy'
+import { getLoadingProgress } from '../features/galaxy/loadingProgress'
 import { viteAssetBase } from '../config/networkConfig'
 
 describe('Galaxy visual asset source mapping', () => {
@@ -15,6 +18,16 @@ describe('Galaxy visual asset source mapping', () => {
     const resolved = new URL(resolveGalaxyAssetUrl(galaxyVisualAssets.home))
     expect(resolved.pathname).toMatch(/\/assets\/galaxy\/reference\/galaxy-home-master-composite\.png$/)
     expect(resolved.pathname).not.toContain('/assets/assets/')
+  })
+
+  it('keeps the Idle master composite canonical, pre-loadable, and independent from the 4.2 second loading clock', () => {
+    const resolved = new URL(resolveGalaxyAssetUrl(galaxyVisualAssets.entry))
+    expect(resolved.pathname).toMatch(/\/assets\/galaxy\/reference\/galaxy-master-composite\.png$/)
+    expect(resolved.pathname).not.toContain('/assets/assets/')
+    expect(galaxySceneAssetMapping.idle).toMatchObject({ composite: 'entry', fallback: 'procedural-css' })
+    expect(galaxyConfig.loadingDurationMs).toBe(4200)
+    expect(getLoadingProgress(4200)).toBe(100)
+    expect(isMobileHomepageScrollEnabled('idle', null)).toBe(false)
   })
 
   it('separates Idle, Homepage, and Video Studio layer contracts', () => {

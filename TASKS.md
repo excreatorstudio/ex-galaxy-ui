@@ -1,5 +1,12 @@
 # Task Register
 
+## v1.2.0-showcase Idle entry visual source fix - Complete locally
+
+- [x] Verified the Idle `galaxy-master-composite` DOM path, canonical URL, visibility, z-index, and low procedural fallback stack.
+- [x] Raised only the Idle composite treatment, preserved the foreground interactive entry, and added a document-head preload without changing the 4200ms Loading contract.
+- [x] Retained mobile Idle scroll locking and the existing Idle-to-Awakened radial transition contract.
+- [ ] Complete final Desktop and iPhone visual acceptance after redeployment: completed artwork visible immediately after Loading, no old-scene flash, safe crop, and tappable Entry.
+
 ## v1.2.0-showcase Orbit Motion and Project Cover Brightness Polish - Complete locally
 
 - [x] Added a Homepage-only slow supplied-orbit rotation, constrained masked sweep, and three-point glint behavior without duplicating the orbit artwork.
