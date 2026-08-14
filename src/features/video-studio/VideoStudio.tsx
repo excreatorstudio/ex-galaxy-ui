@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { galaxyConfig, workflowSteps } from '../../config/galaxyConfig'
 import { galaxyVisualAssets, resolveGalaxyAssetUrl } from '../../config/galaxyVisualAssets'
 import { getCoreActivationTiming } from '../../config/coreActivationConfig'
+import { orbitMotion } from '../../config/orbitMotion'
 import { mediaAssets } from '../../data/mediaAssets'
 import { useI18n } from '../../i18n'
 import { useGalaxyStore } from '../../state/useGalaxyStore'
@@ -72,7 +73,7 @@ export function VideoStudio() {
     <div className="video-studio-scene" data-asset-stack="video-studio" data-asset-layers="base,nebula,orbits,stars,atmosphere" style={sceneStyle} aria-hidden="true">
       <i className="video-studio-scene__base" data-asset-layer="base"/>
       <i className="video-studio-scene__nebula" data-asset-layer="nebula"/>
-      <i className="video-studio-scene__orbits" data-asset-layer="orbits"/>
+      <i className="video-studio-scene__orbits video-studio-orbit-motion" data-asset-layer="orbits" data-orbit-motion="video-studio" style={{ '--orbit-rotation-duration': `${orbitMotion.videoStudio.rotationSeconds}s` } as CSSProperties}/>
       <i className="video-studio-scene__stars" data-asset-layer="stars"/>
       <i className="video-studio-scene__atmosphere" data-asset-layer="atmosphere"/>
     </div>

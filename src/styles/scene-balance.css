@@ -44,6 +44,7 @@
 .video-studio-scene__base { background-image: var(--video-studio-asset-base); opacity: .2; filter: brightness(.4) saturate(.4); }
 .video-studio-scene__nebula { background-image: var(--video-studio-asset-nebula); opacity: .09; mix-blend-mode: screen; filter: brightness(.52) saturate(.34); }
 .video-studio-scene__orbits { background-image: var(--video-studio-asset-orbits); opacity: .17; mix-blend-mode: screen; filter: brightness(.68) saturate(.42); }
+.video-studio-orbit-motion { transform-origin: 50% 50%; will-change: transform; animation: videoStudioOrbitRotation var(--orbit-rotation-duration, 126s) linear infinite; }
 .video-studio-scene__stars { background-image: var(--video-studio-asset-stars); opacity: .09; mix-blend-mode: screen; filter: brightness(.55) saturate(.3); }
 .video-studio-scene__atmosphere { background-image: var(--video-studio-asset-atmosphere); opacity: .045; filter: brightness(.46) saturate(.25); }
 .video-studio > :not(.video-studio-scene) { position: relative; z-index: 1; }
@@ -53,22 +54,28 @@
   .video-studio-scene__base { opacity: .16; }
   .video-studio-scene__nebula { opacity: .06; }
   .video-studio-scene__orbits { opacity: .12; }
+  .video-studio-orbit-motion { --orbit-rotation-duration: 136s !important; }
   .video-studio-scene__stars { opacity: .06; }
   .video-studio-scene__atmosphere { opacity: .03; }
 }
 
+.motion-off .video-studio-orbit-motion,
+.reduce-motion .video-studio-orbit-motion { animation: none; }
+
+@keyframes videoStudioOrbitRotation { to { transform: rotate(360deg); } }
+
 /* Showcase covers retain the original card-art gradient as a visual fallback and place readability above image detail. */
 .media-card .card-art { isolation: isolate; background: linear-gradient(145deg, #111b35, #13244b 48%, #09101f); }
-.media-card .card-art img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; filter: brightness(.68) saturate(.72) contrast(.96); transition: transform .45s var(--ease-cinematic), filter .45s ease; }
-.media-card .card-art:after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, #01040a52 0%, #06102112 37%, #02050dec 100%), linear-gradient(105deg, #02051058, transparent 54%); pointer-events: none; }
+.media-card .card-art img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; filter: brightness(var(--project-cover-brightness, 1.32)) saturate(var(--project-cover-saturate, 1.05)) contrast(var(--project-cover-contrast, 1.04)); transition: transform .45s var(--ease-cinematic), filter .45s ease; }
+.media-card .card-art:after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, #01040a38 0%, #0610210a 39%, #02050dd9 100%), linear-gradient(105deg, #0205103d, transparent 54%); pointer-events: none; }
 .media-card:hover .card-art img,
-.media-card:focus-visible .card-art img { transform: scale(1.045); filter: brightness(.82) saturate(.82) contrast(1.02); }
+.media-card:focus-visible .card-art img { transform: scale(1.018); filter: brightness(var(--project-cover-hover-brightness, 1.4)) saturate(var(--project-cover-saturate, 1.05)) contrast(var(--project-cover-contrast, 1.04)); }
 .media-card .card-meta { z-index: 1; text-shadow: 0 1px 10px #02040a; }
 .media-card .card-meta:before { content: ""; position: absolute; inset: -28px -11px -9px; background: linear-gradient(180deg, transparent, #02040af2 52%); z-index: -1; pointer-events: none; }
 .media-card.c3 .card-art img { object-position: 50% 50%; }
 
 @media (max-width: 560px) {
-  .media-card .card-art img { filter: brightness(.6) saturate(.65); }
+  .media-card .card-art img { filter: brightness(var(--project-cover-brightness, 1.32)) saturate(var(--project-cover-saturate, 1.05)) contrast(var(--project-cover-contrast, 1.04)); }
   .media-card:hover .card-art img,
-  .media-card:focus-visible .card-art img { transform: scale(1.025); filter: brightness(.69) saturate(.72); }
+  .media-card:focus-visible .card-art img { transform: scale(1.01); filter: brightness(var(--project-cover-hover-brightness, 1.4)) saturate(var(--project-cover-saturate, 1.05)) contrast(var(--project-cover-contrast, 1.04)); }
 }

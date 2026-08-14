@@ -1,5 +1,11 @@
 # Decisions
 
+## 2026-08-14 - Orbit life and cover visibility stay layer-scoped
+
+`galaxy-orbit-rings.png` remains the only Homepage ring artwork. Its fixed-center 88-second linear rotation is paired with a masked cold-light sweep and a three-point glint field, so no duplicate orbit image, position drift, or global scene exposure is introduced. Mobile retains only the slower rotation plus a dim sweep; glints are removed. Video Studio has a separate 126-second structural rotation and no Hero sweep/glints. Motion Off and Reduced Motion stop all of these loops.
+
+Project-cover visibility is owned by individual image tokens, not the Galaxy Scene. FILM, CAMPAIGN, REEL, AI, and AUDIO have deliberately distinct brightness values in the 1.30-1.38 range; the cover-only upper overlay is lighter, while the lower metadata gradient and pre-existing CSS gradient fallback remain dark enough for copy. Scene Balance opacity contracts remain unchanged.
+
 ## 2026-08-14 - Mobile radial transition and scene-specific scroll policy
 
 Mobile Safe Mode continues to fail closed when Auto capability judges WebGL constrained; it must not silently substitute a diagonal planar sweep. Its CSS fallback now follows the shared transition language: center impact, opposing primary radial shards, secondary up/down spread, and a late stardust tail. The normal 900ms duration and 560ms commit remain shared with desktop; Reduced Motion remains the existing short shard-free path. When optional Canvas is available on mobile, the WebGL Low renderer keeps the DPR 1/six-shard budget and selects seeds covering all four waves.

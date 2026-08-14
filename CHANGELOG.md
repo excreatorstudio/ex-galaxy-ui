@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.2.0-showcase - Orbit Motion and Project Cover Brightness Polish - 2026-08-14
+
+- Added slow fixed-center motion to the supplied Homepage orbit layer, with a restrained masked cold-light sweep and limited glint field; Video Studio receives a slower structural rotation only, and Idle remains unchanged.
+- Added individual Project Cover brightness/hover tokens, lifted the cover-only upper overlay, retained the dark metadata gradient and image-error fallback, and left Galaxy Scene Balance untouched.
+
 ## 1.2.0-showcase - Mobile transition and Homepage scroll critical fix - 2026-08-14
 
 - Replaced Mobile CSS fallback's remaining diagonal fragments, streaks, and refraction sweep with a lightweight center-origin radial glass/stardust sequence: six shards across Center, Primary, Secondary, and Tail waves plus a centered impact bloom.

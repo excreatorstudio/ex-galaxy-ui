@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, type CSSProperties } from 'react'
 import { galaxyConfig } from '../../config/galaxyConfig'
 import { galaxySceneAssetMapping, galaxyVisualAssets, resolveGalaxyAssetUrl, type GalaxySceneAssetKey } from '../../config/galaxyVisualAssets'
 import { moduleDefinitions } from '../../config/moduleDefinitions'
+import { orbitMotion } from '../../config/orbitMotion'
 import { useI18n } from '../../i18n'
 import { useGalaxyStore } from '../../state/useGalaxyStore'
 
@@ -42,7 +43,7 @@ export function GalaxyScene() {
       <div className="galaxy-home-composite" data-asset-layer="home" data-scene-role="homepage"/>
       <div className="galaxy-home-visuals" data-asset-stack="homepage" data-asset-layers={homeLayers.join(',')}>
         <i className="galaxy-visual-nebula" data-asset-layer="nebula"/>
-        <i className="galaxy-visual-orbits" data-asset-layer="orbits"/>
+        <i className="galaxy-visual-orbits galaxy-orbit-motion" data-asset-layer="orbits" data-orbit-motion="homepage" style={{ '--orbit-rotation-duration': `${orbitMotion.homepage.rotationSeconds}s`, '--orbit-sweep-duration': `${orbitMotion.homepage.sweepSeconds}s`, '--orbit-glint-duration': `${orbitMotion.homepage.glintSeconds}s` } as CSSProperties}><span className="orbit-light-sweep"/><span className="orbit-glints"/></i>
         <i className="galaxy-visual-core-glow" data-asset-layer="coreGlow"/>
         <i className="galaxy-visual-core-particles" data-asset-layer="coreParticles"/>
         <i className="galaxy-visual-ex-outline" data-asset-layer="exOutline"/>

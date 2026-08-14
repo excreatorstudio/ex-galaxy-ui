@@ -148,6 +148,45 @@
   filter: brightness(.58) saturate(.5);
 }
 
+/* The supplied orbit artwork remains the only ring image. Motion is centered
+ * on that layer; sweep and glints are masked overlays, never a duplicate ring. */
+.galaxy-scene--home .galaxy-orbit-motion {
+  transform-origin: 50% 50%;
+  will-change: transform;
+  animation: homepageOrbitRotation var(--orbit-rotation-duration, 88s) linear infinite;
+}
+
+.orbit-light-sweep,
+.orbit-glints {
+  position: absolute;
+  inset: 0;
+  display: block;
+  pointer-events: none;
+  -webkit-mask-image: var(--galaxy-asset-orbits);
+  mask-image: var(--galaxy-asset-orbits);
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: cover;
+  mask-size: cover;
+}
+
+.orbit-light-sweep {
+  background: conic-gradient(from 214deg at 50% 50%, transparent 0deg 38deg, #e5f4ff00 45deg, #dff3ff7a 52deg, #8fc8ff32 58deg, transparent 67deg 360deg);
+  mix-blend-mode: screen;
+  opacity: .2;
+  transform-origin: 50% 50%;
+  animation: orbitLightSweep var(--orbit-sweep-duration, 9.4s) linear infinite;
+}
+
+.orbit-glints {
+  background: radial-gradient(circle at 27% 39%, #eff8ffb8 0 1px, #b8dcff55 2px, transparent 7px), radial-gradient(circle at 73% 58%, #e7f5ff9c 0 1px, #b9d7ff45 2px, transparent 6px), radial-gradient(circle at 52% 22%, #f3fbff90 0 1px, transparent 5px);
+  mix-blend-mode: screen;
+  opacity: .16;
+  animation: orbitGlintPulse var(--orbit-glint-duration, 10.8s) steps(1, end) infinite;
+}
+
 .galaxy-scene--home .galaxy-visual-core-glow {
   opacity: .12;
   filter: brightness(.44) saturate(.42) blur(.15px);
@@ -244,6 +283,9 @@
 
   .galaxy-scene--home .galaxy-visual-nebula { opacity: .09; }
   .galaxy-scene--home .galaxy-visual-orbits { opacity: .15; }
+  .galaxy-scene--home .galaxy-orbit-motion { --orbit-rotation-duration: 116s !important; }
+  .orbit-light-sweep { opacity: .11; --orbit-sweep-duration: 12s !important; }
+  .orbit-glints { display: none; }
   .galaxy-scene--home .galaxy-visual-core-glow { opacity: .09; }
   .galaxy-scene--home .galaxy-visual-core-particles { opacity: .09; }
   .galaxy-scene--home .galaxy-visual-ex-outline { opacity: .04; }
@@ -261,4 +303,31 @@
   .galaxy-home-visuals {
     transition: none;
   }
+
+  .galaxy-orbit-motion,
+  .orbit-light-sweep,
+  .orbit-glints {
+    animation: none;
+  }
+}
+
+.motion-off .galaxy-orbit-motion,
+.motion-off .orbit-light-sweep,
+.motion-off .orbit-glints {
+  animation: none;
+}
+
+@keyframes homepageOrbitRotation {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes orbitLightSweep {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes orbitGlintPulse {
+  0%, 18%, 100% { opacity: .08; }
+  23%, 28% { opacity: .26; }
+  54%, 59% { opacity: .21; }
+  76%, 81% { opacity: .24; }
 }

@@ -1,5 +1,12 @@
 # Task Register
 
+## v1.2.0-showcase Orbit Motion and Project Cover Brightness Polish - Complete locally
+
+- [x] Added a Homepage-only slow supplied-orbit rotation, constrained masked sweep, and three-point glint behavior without duplicating the orbit artwork.
+- [x] Kept Video Studio's orbit low-cost and slow, retained Idle static, and disabled all added motion for Motion Off / Reduced Motion.
+- [x] Added per-cover brightness tokens and reduced only the cover's upper overlay while retaining dark metadata readability and image-error gradient fallback.
+- [ ] Complete visual cadence and contrast review at 1440px, 1920px, 390px, and 560px; redeploy with the currently pending Showcase fixes.
+
 ## v1.2.0-showcase Mobile transition and Homepage scroll critical fix - Complete locally
 
 - [x] Traced Mobile Auto/Safe Mode to the CSS fallback when a constrained device declines optional WebGL; isolated the remaining diagonal fragments, stardust, and refraction sweep.

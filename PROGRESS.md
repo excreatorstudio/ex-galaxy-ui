@@ -1,5 +1,13 @@
 # Progress
 
+## E.X Galaxy v1.2.0-showcase - Orbit Motion and Project Cover Brightness Polish - 2026-08-14
+
+**Status: COMPLETE LOCALLY / PREVIEW AND PUBLIC REDEPLOY PENDING**
+
+- Restored restrained life to the supplied Homepage orbit image only: one fixed-center 88s linear rotation, a masked 9.4s cold-light sweep, and a maximum three-point glint field. Video Studio receives only a slower 126s functional orbit rotation; Idle remains static.
+- Established per-cover brightness tokens for FILM, CAMPAIGN, REEL, AI, and AUDIO, raised image visibility while lowering only the upper cover overlay, and retained the deep metadata gradient plus static CSS gradient fallback.
+- No Scene Balance asset opacity, Homepage layout, transition, scrolling, Core activation, or runtime asset mapping changed.
+
 ## E.X Galaxy v1.2.0-showcase - Mobile transition and Homepage scroll critical fix - 2026-08-14
 
 **Status: COMPLETE LOCALLY / DEVICE AND PUBLIC REDEPLOY PENDING**
