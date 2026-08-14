@@ -1,0 +1,264 @@
+/*
+ * Source-of-truth scene remap for the supplied Galaxy artwork.
+ *
+ * The older procedural universe remains mounted as a low-cost fallback, but
+ * the supplied public images now own the visible artwork stack. Explicit
+ * stacking keeps the opaque composites and transparent layers above the
+ * fallback vignette without changing application or transition timing.
+ */
+.galaxy-asset-base,
+.galaxy-entry-composite,
+.galaxy-home-composite,
+.galaxy-home-visuals {
+  z-index: 0;
+}
+
+.galaxy-asset-base {
+  z-index: 0;
+  opacity: 0;
+}
+
+.galaxy-entry-composite,
+.galaxy-home-composite {
+  background-size: cover;
+  background-position: center;
+  transition: opacity .7s ease, filter .7s ease;
+}
+
+.galaxy-idle-support,
+.galaxy-idle-support i {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.galaxy-idle-support {
+  z-index: 3;
+  opacity: 1;
+}
+
+.galaxy-idle-stars {
+  background-image: var(--galaxy-asset-stars);
+  mix-blend-mode: screen;
+  opacity: .08;
+  filter: brightness(.44) saturate(.4);
+}
+
+.galaxy-idle-atmosphere {
+  background-image: var(--galaxy-asset-atmosphere);
+  opacity: .035;
+  filter: brightness(.38) saturate(.32);
+}
+
+.galaxy-scene:not(.idle) .galaxy-idle-support {
+  display: none;
+  visibility: hidden;
+}
+
+.galaxy-entry-composite {
+  z-index: 2;
+  opacity: 0;
+}
+
+.galaxy-home-composite {
+  z-index: 2;
+  opacity: 0;
+}
+
+.galaxy-home-visuals {
+  z-index: 3;
+  isolation: isolate;
+  opacity: 0;
+  transition: opacity .7s ease, filter .7s ease;
+}
+
+.galaxy-home-visuals i {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.galaxy-home-visuals .galaxy-visual-nebula { z-index: 1; }
+.galaxy-home-visuals .galaxy-visual-orbits { z-index: 2; }
+.galaxy-home-visuals .galaxy-visual-core-glow { z-index: 3; }
+.galaxy-home-visuals .galaxy-visual-core-particles { z-index: 4; }
+.galaxy-home-visuals .galaxy-visual-ex-outline { z-index: 5; }
+.galaxy-home-visuals .galaxy-visual-stars { z-index: 6; }
+.galaxy-home-visuals .galaxy-visual-atmosphere { z-index: 7; }
+
+/* Idle is an entry ritual: the finished composite is primary and the CSS
+ * universe is only a quiet fallback/support field. */
+.galaxy-scene.idle .galaxy-asset-base {
+  opacity: .035;
+  filter: brightness(.28) saturate(.28);
+}
+
+.galaxy-scene.idle .galaxy-entry-composite {
+  opacity: .86;
+  filter: brightness(.7) saturate(.72) contrast(.96);
+}
+
+.galaxy-scene.idle .galaxy-home-composite,
+.galaxy-scene.idle .galaxy-home-visuals {
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.galaxy-scene.idle .nebula { opacity: .035; animation: none; }
+.galaxy-scene.idle .star-layer.far { opacity: .08; }
+.galaxy-scene.idle .star-layer.near { opacity: .11; }
+.galaxy-scene.idle .galaxy-core { opacity: .08; filter: brightness(.36) saturate(.3); }
+.galaxy-scene.idle .orbit-system { opacity: .08; filter: brightness(.38) saturate(.34); }
+
+/* Awakened and non-Video Module Focus use the supplied home artwork plus the
+ * complete transparent core-visual stack. Values are intentionally restrained
+ * because the source artwork already carries its own luminance. */
+.galaxy-scene--home .galaxy-asset-base {
+  opacity: .42;
+  filter: brightness(.42) saturate(.56) contrast(.96);
+}
+
+.galaxy-scene--home .galaxy-home-composite {
+  opacity: .16;
+  filter: brightness(.52) saturate(.62) contrast(.94);
+}
+
+/* The base stylesheet has a legacy awakened default with higher specificity;
+ * this scene-qualified rule makes the new source balance authoritative. */
+.galaxy-scene.awakened.galaxy-scene--home .galaxy-home-composite,
+.galaxy-scene.module-focus.galaxy-scene--home .galaxy-home-composite {
+  opacity: .16;
+}
+
+.galaxy-scene--home .galaxy-home-visuals {
+  opacity: 1;
+}
+
+.galaxy-scene--home .galaxy-visual-nebula {
+  opacity: .12;
+  filter: brightness(.48) saturate(.45);
+}
+
+.galaxy-scene--home .galaxy-visual-orbits {
+  opacity: .21;
+  filter: brightness(.58) saturate(.5);
+}
+
+.galaxy-scene--home .galaxy-visual-core-glow {
+  opacity: .12;
+  filter: brightness(.44) saturate(.42) blur(.15px);
+}
+
+.galaxy-scene--home .galaxy-visual-core-particles {
+  opacity: .12;
+  filter: brightness(.54) saturate(.5);
+}
+
+.galaxy-scene--home .galaxy-visual-ex-outline {
+  opacity: .065;
+  filter: brightness(.46) saturate(.45) blur(.15px);
+}
+
+.galaxy-scene--home .galaxy-visual-stars {
+  opacity: .1;
+  filter: brightness(.48) saturate(.42);
+}
+
+.galaxy-scene--home .galaxy-visual-atmosphere {
+  opacity: .05;
+  filter: brightness(.42) saturate(.36);
+}
+
+/* Procedural layers remain secondary motion/fallback, never the Hero source. */
+.galaxy-scene--home .nebula { opacity: .055; animation: none; }
+.galaxy-scene--home .star-layer.far { opacity: .1; }
+.galaxy-scene--home .star-layer.near { opacity: .14; }
+.galaxy-scene--home .galaxy-core { opacity: .12; filter: brightness(.42) saturate(.35); }
+.galaxy-scene--home .orbit-system { opacity: .1; filter: brightness(.44) saturate(.38); }
+
+/* Video Studio's GalaxyScene is a CSS fallback only; the functional five
+ * layer stack lives in VideoStudio and never receives Hero composites. */
+.galaxy-scene--video-studio .galaxy-entry-composite,
+.galaxy-scene--video-studio .galaxy-home-composite,
+.galaxy-scene--video-studio .galaxy-home-visuals {
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.galaxy-scene--video-studio .galaxy-asset-base {
+  opacity: .04;
+  filter: brightness(.25) saturate(.25);
+}
+
+.galaxy-scene--video-studio .nebula {
+  animation: none;
+}
+
+.video-studio-scene {
+  isolation: isolate;
+}
+
+.video-studio-scene__base,
+.video-studio-scene__nebula,
+.video-studio-scene__orbits,
+.video-studio-scene__stars,
+.video-studio-scene__atmosphere {
+  will-change: opacity;
+}
+
+@media (max-width: 560px) {
+  .galaxy-entry-composite,
+  .galaxy-home-composite,
+  .galaxy-home-visuals,
+  .galaxy-home-visuals i,
+  .galaxy-idle-support,
+  .galaxy-idle-support i {
+    background-position: center 46%;
+  }
+
+  .galaxy-scene.idle .galaxy-entry-composite {
+    opacity: .8;
+    filter: brightness(.64) saturate(.68) contrast(.95);
+  }
+
+  .galaxy-scene.idle .galaxy-idle-stars { opacity: .06; }
+  .galaxy-scene.idle .galaxy-idle-atmosphere { opacity: .025; }
+
+  .galaxy-scene--home .galaxy-home-composite {
+    opacity: .11;
+  }
+
+  .galaxy-scene.awakened.galaxy-scene--home .galaxy-home-composite,
+  .galaxy-scene.module-focus.galaxy-scene--home .galaxy-home-composite {
+    opacity: .11;
+  }
+
+  .galaxy-scene--home .galaxy-home-visuals {
+    filter: brightness(.86) saturate(.9);
+  }
+
+  .galaxy-scene--home .galaxy-visual-nebula { opacity: .09; }
+  .galaxy-scene--home .galaxy-visual-orbits { opacity: .15; }
+  .galaxy-scene--home .galaxy-visual-core-glow { opacity: .09; }
+  .galaxy-scene--home .galaxy-visual-core-particles { opacity: .09; }
+  .galaxy-scene--home .galaxy-visual-ex-outline { opacity: .04; }
+  .galaxy-scene--home .galaxy-visual-stars { opacity: .075; }
+  .galaxy-scene--home .galaxy-visual-atmosphere { opacity: .028; }
+
+  .galaxy-scene--video-studio .galaxy-asset-base {
+    opacity: .028;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .galaxy-entry-composite,
+  .galaxy-home-composite,
+  .galaxy-home-visuals {
+    transition: none;
+  }
+}

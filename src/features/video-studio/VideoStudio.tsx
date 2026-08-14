@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react'
 import { motion } from 'framer-motion'
 import { galaxyConfig, workflowSteps } from '../../config/galaxyConfig'
-import { galaxyVisualAssets } from '../../config/galaxyVisualAssets'
+import { galaxyVisualAssets, resolveGalaxyAssetUrl } from '../../config/galaxyVisualAssets'
 import { getCoreActivationTiming } from '../../config/coreActivationConfig'
 import { mediaAssets } from '../../data/mediaAssets'
 import { useI18n } from '../../i18n'
@@ -33,11 +33,11 @@ export function VideoStudio() {
     '--project-core-activation-duration': `${projectCoreActivationDurationMs}ms`,
   } as CSSProperties
   const sceneStyle = {
-    '--video-studio-asset-base': `url("${galaxyVisualAssets.base}")`,
-    '--video-studio-asset-nebula': `url("${galaxyVisualAssets.nebula}")`,
-    '--video-studio-asset-orbits': `url("${galaxyVisualAssets.orbits}")`,
-    '--video-studio-asset-stars': `url("${galaxyVisualAssets.stars}")`,
-    '--video-studio-asset-atmosphere': `url("${galaxyVisualAssets.atmosphere}")`,
+    '--video-studio-asset-base': `url("${resolveGalaxyAssetUrl(galaxyVisualAssets.base)}")`,
+    '--video-studio-asset-nebula': `url("${resolveGalaxyAssetUrl(galaxyVisualAssets.nebula)}")`,
+    '--video-studio-asset-orbits': `url("${resolveGalaxyAssetUrl(galaxyVisualAssets.orbits)}")`,
+    '--video-studio-asset-stars': `url("${resolveGalaxyAssetUrl(galaxyVisualAssets.stars)}")`,
+    '--video-studio-asset-atmosphere': `url("${resolveGalaxyAssetUrl(galaxyVisualAssets.atmosphere)}")`,
   } as CSSProperties
 
   const runWorkflow = (fast = false) => {
@@ -69,7 +69,13 @@ export function VideoStudio() {
 
   return <section className="video-studio">
     <ProjectCoreActivationController />
-    <div className="video-studio-scene" style={sceneStyle} aria-hidden="true"><i className="video-studio-scene__base"/><i className="video-studio-scene__nebula"/><i className="video-studio-scene__orbits"/><i className="video-studio-scene__stars"/><i className="video-studio-scene__atmosphere"/></div>
+    <div className="video-studio-scene" data-asset-stack="video-studio" data-asset-layers="base,nebula,orbits,stars,atmosphere" style={sceneStyle} aria-hidden="true">
+      <i className="video-studio-scene__base" data-asset-layer="base"/>
+      <i className="video-studio-scene__nebula" data-asset-layer="nebula"/>
+      <i className="video-studio-scene__orbits" data-asset-layer="orbits"/>
+      <i className="video-studio-scene__stars" data-asset-layer="stars"/>
+      <i className="video-studio-scene__atmosphere" data-asset-layer="atmosphere"/>
+    </div>
     <header className="studio-header"><div><p>{t('video.header')}</p><h2>{t('video.title')}</h2></div><div className="workflow-readout"><span>{stepText}</span><b>{progress}%</b></div></header>
     <div className="workflow-space">
       <div className={`project-core-anchor ${activationClass}`} style={activationStyle}>

@@ -1,0 +1,216 @@
+/* Awakened Homepage layout polish: a restrained orbital composition around the brand. */
+.home-layout{
+  --home-canvas-inline:clamp(56px,7vw,126px);
+  --home-canvas-top:clamp(104px,11vh,146px);
+  --home-canvas-bottom:clamp(96px,13vh,154px);
+  --home-card-primary:clamp(176px,15vw,252px);
+  --home-card-secondary:clamp(148px,12vw,204px);
+  --home-card-reel:clamp(112px,8vw,150px);
+}
+
+.home-layout .brand-center{
+  top:45.5%;
+  z-index:4;
+  width:min(52vw,760px);
+  pointer-events:none;
+  animation:homeBrandSettle 1.3s var(--ease-cinematic) both;
+}
+.home-layout .brand-center p{
+  margin-bottom:10px;
+  color:#b7c3e2c4;
+  font-size:9px;
+  letter-spacing:.28em;
+}
+.home-layout .brand-center h1{
+  font-size:clamp(30px,3.45vw,56px);
+  letter-spacing:.28em;
+  text-indent:.28em;
+  text-shadow:0 0 26px #d4c8ffb0;
+}
+.home-layout .brand-center small{
+  margin-top:12px;
+  color:#9caaca99;
+  font-size:8px;
+  letter-spacing:.15em;
+}
+
+.home-layout .floating-cards{
+  position:absolute;
+  inset:var(--home-canvas-top) var(--home-canvas-inline) var(--home-canvas-bottom);
+  z-index:3;
+  pointer-events:none;
+}
+.home-layout .media-card{
+  pointer-events:auto;
+  min-width:0;
+  width:var(--home-card-secondary);
+  border-color:#b3c4ee60;
+  box-shadow:0 13px 30px #0009;
+  transform:rotate(var(--rotate,0deg));
+  transition:transform .35s var(--ease-cinematic),box-shadow .35s ease,filter .35s ease,border-color .35s ease;
+}
+.home-layout .media-card:hover,.home-layout .media-card:focus-visible{
+  transform:translateY(-3px) rotate(var(--hover-rotate,0deg)) scale(1.018);
+  border-color:#c9d8ff9c;
+  box-shadow:0 18px 35px #000b,0 0 13px #8eaaff3d;
+  filter:brightness(1.035);
+}
+.home-layout .c0{
+  left:2%;
+  top:5%;
+  width:var(--home-card-primary);
+  --rotate:-4deg;
+  --hover-rotate:-2deg;
+}
+.home-layout .c1{
+  left:14%;
+  bottom:2%;
+  --rotate:3deg;
+  --hover-rotate:1deg;
+}
+.home-layout .c2{
+  right:2%;
+  top:4%;
+  width:var(--home-card-primary);
+  --rotate:3deg;
+  --hover-rotate:1deg;
+}
+.home-layout .c3{
+  right:0;
+  top:54%;
+  width:var(--home-card-reel);
+  aspect-ratio:.72;
+  --rotate:-3deg;
+  --hover-rotate:-1deg;
+}
+.home-layout .c4{
+  left:50%;
+  bottom:1%;
+  width:var(--home-card-secondary);
+  --rotate:2deg;
+  --hover-rotate:1deg;
+  transform:translateX(-50%) rotate(var(--rotate));
+}
+.home-layout .c4:hover,.home-layout .c4:focus-visible{
+  transform:translateX(-50%) translateY(-3px) rotate(var(--hover-rotate)) scale(1.018);
+}
+
+.home-layout .bottom-actions{
+  bottom:7%;
+  z-index:5;
+  width:min(390px,38vw);
+  min-width:0;
+  padding:4px;
+  border:1px solid #9ab5ee52;
+  border-radius:16px;
+  background:linear-gradient(115deg,#0b1429c9,#050914e8);
+  box-shadow:0 12px 32px #0009,inset 0 1px #e0edff15;
+}
+.home-layout .bottom-actions button{
+  min-height:44px;
+  padding:9px 13px;
+  border-right-color:#9ab5ee2e;
+  font-size:19px;
+  transition:background .25s ease,color .25s ease,transform .25s ease;
+}
+.home-layout .bottom-actions button:hover,.home-layout .bottom-actions button:focus-visible{
+  background:#8faeff12;
+  color:#f2f6ff;
+}
+.home-layout .bottom-actions span{font-size:8px;letter-spacing:.1em}
+.home-layout footer{bottom:2.5%;color:#9ba8c2c4}
+
+.reduce-motion .home-layout .media-card:hover,.reduce-motion .home-layout .media-card:focus-visible{
+  transform:rotate(var(--rotate,0deg));
+  filter:brightness(1.04);
+  border-color:#c9d8ff86;
+}
+.reduce-motion .home-layout .c4:hover,.reduce-motion .home-layout .c4:focus-visible{
+  transform:translateX(-50%) rotate(var(--rotate));
+}
+
+@media(max-width:560px){
+  .home-layout{
+    overflow-x:hidden;
+    overflow-y:auto;
+    padding-bottom:1px;
+  }
+  .home-layout .topbar{
+    position:sticky;
+    top:12px;
+    left:auto;
+    right:auto;
+    width:auto;
+    margin:12px;
+    z-index:10;
+  }
+  .home-layout .brand-center{
+    position:relative;
+    inset:auto;
+    transform:none;
+    width:calc(100% - 32px);
+    margin:clamp(38px,10vw,58px) auto 18px;
+    animation:homeBrandSettleMobile 1.3s var(--ease-cinematic) both;
+  }
+  .home-layout .brand-center p{font-size:8px;letter-spacing:.22em}
+  .home-layout .brand-center h1{font-size:clamp(26px,9.5vw,40px);letter-spacing:.2em;text-indent:.2em}
+  .home-layout .brand-center small{margin-top:9px;font-size:7px}
+  .home-layout .floating-cards{
+    position:relative;
+    inset:auto;
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    grid-template-areas:"film film" "campaign campaign" "ai audio" "reel reel";
+    gap:24px;
+    width:calc(100% - 24px);
+    margin:0 auto;
+    padding-bottom:2px;
+  }
+  .home-layout .media-card{
+    position:relative;
+    inset:auto;
+    width:100%;
+    min-width:0;
+    aspect-ratio:1.24;
+  }
+  .home-layout .c0{display:grid;grid-area:film;max-width:390px;justify-self:center;aspect-ratio:1.78}
+  .home-layout .c1{display:grid;grid-area:ai}
+  .home-layout .c2{display:grid;grid-area:campaign;max-width:390px;justify-self:center;aspect-ratio:1.78}
+  .home-layout .c3{display:grid;grid-area:reel;width:min(44vw,150px);aspect-ratio:.74;justify-self:center}
+  .home-layout .c4{display:grid;grid-area:audio;transform:rotate(var(--rotate))}
+  .home-layout .c4:hover,.home-layout .c4:focus-visible{transform:translateY(-3px) rotate(var(--hover-rotate)) scale(1.018)}
+  .home-layout .bottom-actions{
+    position:relative;
+    left:auto;
+    bottom:auto;
+    transform:none;
+    width:calc(100% - 24px);
+    margin:16px auto 12px;
+  }
+  .home-layout .bottom-actions button{padding:8px 5px}
+  .home-layout footer{
+    position:relative;
+    left:auto;
+    right:auto;
+    bottom:auto;
+    margin:0 18px 20px;
+    padding-bottom:4px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .home-layout .media-card:hover,.home-layout .media-card:focus-visible{
+    transform:rotate(var(--rotate,0deg));
+    filter:brightness(1.04);
+  }
+  .home-layout .c4:hover,.home-layout .c4:focus-visible{transform:translateX(-50%) rotate(var(--rotate))}
+}
+
+@keyframes homeBrandSettle{
+  from{opacity:0;transform:translate(-50%,-42%) scale(1.04);filter:blur(5px)}
+  to{opacity:1;transform:translate(-50%,-50%) scale(1);filter:blur(0)}
+}
+@keyframes homeBrandSettleMobile{
+  from{opacity:0;transform:translateY(8px) scale(.98);filter:blur(4px)}
+  to{opacity:1;transform:none;filter:blur(0)}
+}

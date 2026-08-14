@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.2.0-showcase - Visual asset source correction - 2026-08-14
+
+- Re-verified the two master composites and eight transparent core-visual PNGs from `public/assets/galaxy/` and documented their real dimensions, alpha coverage, public URLs, and runtime ownership.
+- Remapped Idle, Awakened / non-Video Module Focus, and Video Studio to independent image-layer contracts. Idle now uses the entry composite as its primary source; Homepage uses the home composite plus the supplied transparent layers; Video Studio keeps only the five functional background layers.
+- Added explicit image-stack z-index, scene metadata, active-scene URL variables, and a procedural fallback path without changing existing state, activation, Presentation, or transition timing.
+- Corrected CSS custom-property URL resolution so deployed project-site assets resolve to `/assets/galaxy/...` rather than the stale `/assets/assets/galaxy/...` path. Local production preview now serves all ten source images at HTTP 200; the currently published Pages build still needs redeployment.
+
+## 1.2.0-showcase - 2026-08-14 - Awakened Homepage layout polish
+
+- Replaced the old five-card floating spread with a scoped desktop orbital composition around the existing E.X GALAXY brand and cover assets.
+- Reduced the Homepage brand scale, lowered secondary copy presence, and refined the three-action Command Dock into a thinner floating glass control.
+- Added a real 560px-and-below grid flow for Project Showcase cards, including safe Reel cropping and no horizontal overflow.
+- Kept cover mapping, i18n, Presentation, reduced-motion behavior, Video Studio, Core activation, Spatial rendering, and scene-balance values unchanged.
+
 ## 1.2.0-showcase ??2026-08-13 ??GitHub Pages release
 
 - Prepared the public E.X Galaxy Showcase for GitHub Pages with a Node 22 Actions workflow that runs install, lint, test, build, Pages configuration, artifact upload, and deployment from `main`.

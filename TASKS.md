@@ -1,5 +1,26 @@
 # Task Register
 
+## v1.2.0-showcase Visual asset source correction - Complete locally
+
+- [x] Re-verified all ten supplied public PNGs, including dimensions, RGB/RGBA channel type, alpha coverage, file paths, and static output size.
+- [x] Added explicit Idle, Homepage, non-Video Module Focus, and Video Studio asset contracts with scene-specific DOM ownership.
+- [x] Promoted supplied image layers above the fallback vignette and reduced procedural Galaxy layers to secondary fallback motion.
+- [x] Kept Video Studio to background base, nebula, orbit, stars, and atmosphere; Hero composites, core glow, particles, and E.X outline are not rendered there.
+- [x] Added asset mapping / relative-path / scene separation regression coverage and updated visual asset documentation.
+- [x] Ran lint, test, build, and browser preview at 1440px, 1920px, 560px, and `?spatial=off`; local canonical asset URLs return HTTP 200 and no overflow was observed.
+- [ ] Redeploy the corrected build and verify all ten public GitHub Pages asset URLs return HTTP 200; the current public deployment still requests the stale `/assets/assets/galaxy/...` paths.
+
+## v1.2.0-showcase Awakened Homepage layout polish - Complete
+
+- [x] Added a dedicated Homepage layout shell without changing the Idle or Module Focus DOM.
+- [x] Rebalanced the brand focal scale and arranged FILM, CAMPAIGN, AI, AUDIO, and REEL around bounded desktop anchors without changing cover mapping.
+- [x] Converted 560px-and-below Homepage cards to an independent responsive grid flow with no horizontal overflow.
+- [x] Slimmed the Command Dock while retaining all three existing actions and handlers.
+- [x] Added reduced-motion card feedback that avoids lift and scale transforms.
+- [x] Added DOM regression coverage for five covers, three dock actions, Module Focus exclusion, and Presentation-compatible Awakened rendering.
+- [x] Verified local browser layout geometry at 1440, 1600, 1920, and 560px; Video Studio was not altered.
+- [ ] Final owner visual sign-off for brand/card hierarchy and low-light crop treatment.
+
 ## v1.2.0-dev Showcase project covers ??Complete
 
 - [x] Generated and staged five public showcase-cover PNGs for FILM, CAMPAIGN, REEL, AI, and AUDIO.

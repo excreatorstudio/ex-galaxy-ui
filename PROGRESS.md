@@ -1,8 +1,27 @@
 # Progress
 
+## E.X Galaxy v1.2.0-showcase - Visual asset source correction - 2026-08-14
+
+**Status: COMPLETE LOCALLY / PUBLIC REDEPLOY PENDING**
+
+- Re-verified the two opaque reference composites and eight RGBA core-visual PNGs directly from `public/assets/galaxy/`; dimensions, channel type, alpha coverage, public URLs, and static output impact are documented in `docs/GALAXY_VISUAL_ASSETS.md`.
+- Added a data-driven Idle / Homepage / Video Studio asset mapping. Idle now renders the entry composite with only quiet stars and atmosphere support; Awakened and non-Video Module Focus render the home composite plus the complete transparent core-visual stack; Video Studio renders exactly its five functional background layers and no Hero composite/core-only layers.
+- Added explicit scene DOM metadata, active-scene-only CSS variables, z-index ordering above the fallback vignette, and a separate asset-scene stylesheet. Procedural Galaxy layers remain a dim fallback and do not affect existing phase, Core breathing, Presentation, or transition contracts.
+- Validation: lint pass, 12 Vitest files / 71 tests pass, and production build pass. Browser preview covered Idle, Homepage, Video Studio, 1440px, 1920px, 560px, and `?spatial=off` with no horizontal overflow. Public Pages currently serves the previous deployment: its observed asset requests use `/assets/assets/galaxy/...` and return 404, so a redeploy is required before public HTTP 200 acceptance.
+
+## E.X Galaxy v1.2.0-showcase - Awakened Homepage layout polish - 2026-08-14
+
+**Status: COMPLETE / BROWSER VIEWPORT MATRIX VERIFIED**
+
+- Added a dedicated `home-layout` shell for Awakened only. The E.X GALAXY brand is reduced to the requested premium focal scale, while the five existing showcase covers now form a bounded orbital composition with primary, secondary, and vertical Reel size tiers.
+- Replaced the desktop scattered-card reading with stable anchors and converted widths at 560px and below to a true responsive grid flow: Film and Campaign span the main column, AI and Audio share a secondary row, and Reel remains centered in its own vertical-safe row.
+- Slimmed the three-action Command Dock into a floating glass control without changing its i18n keys, handlers, or routing. Reduced Motion keeps card transforms static and uses only restrained brightness/border feedback.
+- Preserved Idle, Video Studio, Core breathing, Spatial, Loading, transition, i18n, Presentation timing, platform panels, Mobile Safe Mode, and GitHub Pages behavior. Browser preview checks covered 1440, 1600, 1920, and 560px with no horizontal overflow.
+- Validation: lint, 11 Vitest files / 67 tests, and production build pass. Final subjective visual sign-off remains a release-owner review item.
+
 ## E.X Galaxy v1.2.0-showcase ??GitHub Pages release ??2026-08-13
 
-**Status: READY FOR PUSH / DEPLOYMENT PENDING**
+**Status: DEPLOYED / PUBLIC PAGES VERIFIED**
 
 - Added the GitHub Pages deployment workflow and release-safe Git ignore policy. The repository is prepared to publish the static Showcase from `main` without tracking `node_modules`, `dist`, local environment files, recovery ZIPs, or the local-only Core MOV reference.
 - Updated release metadata to `v1.2.0-showcase`; the frozen `v1.1.5` archive remains local and unchanged. The relative Vite public asset base remains `./` for repository Pages compatibility.

@@ -1,5 +1,19 @@
 # Decisions
 
+## 2026-08-14 - Supplied Galaxy asset source is scene-specific
+
+The ten public PNGs are not one global background. Idle owns `galaxy-master-composite` with only sparse image stars and atmosphere support; Awakened and non-Video Module Focus own `galaxy-home-master-composite` plus the eight-layer core-visual mapping; Video Studio owns only the five functional background layers. `GalaxyScene` filters inline asset variables to the active scene and exposes scene/layer metadata in the DOM. Explicit z-index keeps supplied layers above the fallback vignette, while the procedural CSS Galaxy remains low-opacity fallback motion. No application phase, Core activation, Presentation timing, i18n, or layout contract is changed.
+
+The emitted CSS file is not the correct base for a `./assets/...` custom-property URL on a project site. Runtime resolution now uses `document.baseURI`, yielding `/ex-galaxy-ui/assets/galaxy/...` on Pages and avoiding the previously observed `/ex-galaxy-ui/assets/assets/galaxy/...` 404. Local preview proves the corrected path; the public site must be redeployed to receive it.
+
+## 2026-08-14 - Awakened Homepage layout polish
+
+The Awakened Homepage now uses a scoped `home-layout` shell rather than inheriting the original scattered absolute card composition. Desktop cards retain asymmetry through five stable anchors: Film and Campaign are primary upper cards, AI and Audio are secondary lower cards, and Reel is a smaller vertical side card. The brand remains centered but uses a 15-20% smaller type scale and a quieter kicker/status treatment.
+
+At 560px and below, the Homepage switches to a CSS grid flow with explicit areas (`film`, `campaign`, `ai`, `audio`, `reel`) so the mobile view is not a shrunken desktop canvas. The Command Dock remains the same three-button action surface, with only its glass dimensions and hierarchy adjusted. Card hover is capped at a small scale/lift, and reduced motion removes those transforms.
+
+The stylesheet is imported after the shared global and scene-balance styles so the Homepage rules can intentionally win only inside `.home-layout`. Video Studio and Module Focus do not render this shell; no background, Core, timing, i18n, Presentation, or platform behavior is changed.
+
 ## 2026-08-13 ??Showcase project-cover treatment
 
 Awakened project cards use generated showcase covers as restrained background photography/art rather than finished campaign deliverables. Covers load by public, relative asset paths through a single `projectCovers` map; a failed `<img>` becomes hidden and the existing per-card CSS gradient remains visible. A two-stage dark overlay and bottom metadata well are mandatory so no cover outshines the E.X Galaxy Hero or makes card copy unreadable. The Video Studio, Presentation state model, locale system, mobile-safe architecture, and central Hero balance are unaffected.

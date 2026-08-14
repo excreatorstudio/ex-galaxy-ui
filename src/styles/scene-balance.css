@@ -1,35 +1,74 @@
-/* Scene-specific artwork balance: preserve dark reserve for the Hero and reserve the brightest light for Video Studio's Auto Create Core. */
-.galaxy-scene.idle .galaxy-entry-composite{filter:brightness(.82) saturate(.84)}
-.galaxy-scene.idle .galaxy-asset-base{opacity:.12}
-.galaxy-scene.awakened:not(.galaxy-scene--video-studio) .galaxy-home-composite,.galaxy-scene.module-focus:not(.galaxy-scene--video-studio) .galaxy-home-composite{opacity:.09;filter:brightness(.58) saturate(.68)}
-.galaxy-scene.awakened:not(.galaxy-scene--video-studio) .galaxy-asset-base,.galaxy-scene.module-focus:not(.galaxy-scene--video-studio) .galaxy-asset-base{opacity:.16;filter:brightness(.62) saturate(.66)}
-.galaxy-scene.awakened:not(.galaxy-scene--video-studio) .galaxy-visual-nebula,.galaxy-scene.module-focus:not(.galaxy-scene--video-studio) .galaxy-visual-nebula{opacity:.17;filter:brightness(.64) saturate(.6)}
-.galaxy-scene.awakened:not(.galaxy-scene--video-studio) .galaxy-visual-orbits,.galaxy-scene.module-focus:not(.galaxy-scene--video-studio) .galaxy-visual-orbits{opacity:.26;filter:brightness(.72) saturate(.64)}
-.galaxy-scene.awakened:not(.galaxy-scene--video-studio) .galaxy-visual-core-glow,.galaxy-scene.module-focus:not(.galaxy-scene--video-studio) .galaxy-visual-core-glow{opacity:.13;filter:brightness(.52) saturate(.55)}
-.galaxy-scene.awakened:not(.galaxy-scene--video-studio) .galaxy-visual-core-particles,.galaxy-scene.module-focus:not(.galaxy-scene--video-studio) .galaxy-visual-core-particles{opacity:.16;filter:brightness(.66) saturate(.62)}
-.galaxy-scene.awakened:not(.galaxy-scene--video-studio) .galaxy-visual-ex-outline,.galaxy-scene.module-focus:not(.galaxy-scene--video-studio) .galaxy-visual-ex-outline{opacity:.14;filter:brightness(.68)}
-.galaxy-scene.awakened:not(.galaxy-scene--video-studio) .galaxy-visual-stars,.galaxy-scene.module-focus:not(.galaxy-scene--video-studio) .galaxy-visual-stars{opacity:.15;filter:brightness(.58)}
-.galaxy-scene.awakened:not(.galaxy-scene--video-studio) .galaxy-visual-atmosphere,.galaxy-scene.module-focus:not(.galaxy-scene--video-studio) .galaxy-visual-atmosphere{opacity:.08;filter:brightness(.58) saturate(.5)}
-.galaxy-scene.awakened:not(.galaxy-scene--video-studio) .galaxy-core,.galaxy-scene.module-focus:not(.galaxy-scene--video-studio) .galaxy-core{filter:drop-shadow(0 0 25px #778ee64d)}
-.galaxy-scene.awakened:not(.galaxy-scene--video-studio) .core-light,.galaxy-scene.module-focus:not(.galaxy-scene--video-studio) .core-light{opacity:.58;filter:brightness(.72) blur(1px)}
-.galaxy-scene.awakened:not(.galaxy-scene--video-studio) .nebula,.galaxy-scene.module-focus:not(.galaxy-scene--video-studio) .nebula{opacity:.16}
-.galaxy-scene.awakened:not(.galaxy-scene--video-studio) .star-layer.far,.galaxy-scene.module-focus:not(.galaxy-scene--video-studio) .star-layer.far{opacity:.22}
-.galaxy-scene.awakened:not(.galaxy-scene--video-studio) .star-layer.near,.galaxy-scene.module-focus:not(.galaxy-scene--video-studio) .star-layer.near{opacity:.34}
-.galaxy-scene.galaxy-scene--video-studio .galaxy-home-composite,.galaxy-scene.galaxy-scene--video-studio .galaxy-home-visuals{display:none;opacity:0;visibility:hidden}
-.galaxy-scene--video-studio .galaxy-asset-base{opacity:.08;filter:brightness(.38) saturate(.36)}
-.galaxy-scene--video-studio .nebula{opacity:.06}.galaxy-scene--video-studio .star-layer.far{opacity:.11}.galaxy-scene--video-studio .star-layer.near{opacity:.15}
-.galaxy-scene--video-studio .galaxy-core,.galaxy-scene--video-studio .orbit-system,.galaxy-scene--video-studio .focus-grid{opacity:.12;filter:brightness(.4) saturate(.35)}
-.video-studio{isolation:isolate}
-.video-studio-scene{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:radial-gradient(ellipse at 50% 43%,#0a173022 0%,#020611e8 47%,#010207 100%)}
-.video-studio-scene i{position:absolute;inset:0;display:block;background-position:center;background-repeat:no-repeat;background-size:cover;pointer-events:none}
-.video-studio-scene__base{background-image:var(--video-studio-asset-base);opacity:.2;filter:brightness(.4) saturate(.4)}
-.video-studio-scene__nebula{background-image:var(--video-studio-asset-nebula);opacity:.09;mix-blend-mode:screen;filter:brightness(.52) saturate(.34)}
-.video-studio-scene__orbits{background-image:var(--video-studio-asset-orbits);opacity:.17;mix-blend-mode:screen;filter:brightness(.68) saturate(.42)}
-.video-studio-scene__stars{background-image:var(--video-studio-asset-stars);opacity:.09;mix-blend-mode:screen;filter:brightness(.55) saturate(.3)}
-.video-studio-scene__atmosphere{background-image:var(--video-studio-asset-atmosphere);opacity:.045;filter:brightness(.46) saturate(.25)}
-.video-studio>:not(.video-studio-scene){position:relative;z-index:1}
-.video-studio .workflow-space:before{background:radial-gradient(circle,#31588714 0%,transparent 56%);filter:blur(8px)}
-@media(max-width:560px){.galaxy-scene.idle .galaxy-entry-composite{filter:brightness(.76) saturate(.76)}.galaxy-scene.awakened:not(.galaxy-scene--video-studio) .galaxy-home-composite,.galaxy-scene.module-focus:not(.galaxy-scene--video-studio) .galaxy-home-composite{opacity:.065}.galaxy-scene.awakened:not(.galaxy-scene--video-studio) .galaxy-home-visuals,.galaxy-scene.module-focus:not(.galaxy-scene--video-studio) .galaxy-home-visuals{filter:brightness(.8)}.video-studio-scene__base{opacity:.16}.video-studio-scene__nebula{opacity:.06}.video-studio-scene__orbits{opacity:.12}.video-studio-scene__stars{opacity:.06}.video-studio-scene__atmosphere{opacity:.03}}
+/* Video Studio's functional background stays separate from Hero artwork. */
+.galaxy-scene.galaxy-scene--video-studio .galaxy-home-composite,
+.galaxy-scene.galaxy-scene--video-studio .galaxy-home-visuals {
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.galaxy-scene--video-studio .galaxy-asset-base {
+  opacity: .08;
+  filter: brightness(.38) saturate(.36);
+}
+
+.galaxy-scene--video-studio .nebula { opacity: .06; }
+.galaxy-scene--video-studio .star-layer.far { opacity: .11; }
+.galaxy-scene--video-studio .star-layer.near { opacity: .15; }
+.galaxy-scene--video-studio .galaxy-core,
+.galaxy-scene--video-studio .orbit-system,
+.galaxy-scene--video-studio .focus-grid {
+  opacity: .12;
+  filter: brightness(.4) saturate(.35);
+}
+
+.video-studio { isolation: isolate; }
+.video-studio-scene {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 50% 43%, #0a173022 0%, #020611e8 47%, #010207 100%);
+}
+
+.video-studio-scene i {
+  position: absolute;
+  inset: 0;
+  display: block;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  pointer-events: none;
+}
+
+.video-studio-scene__base { background-image: var(--video-studio-asset-base); opacity: .2; filter: brightness(.4) saturate(.4); }
+.video-studio-scene__nebula { background-image: var(--video-studio-asset-nebula); opacity: .09; mix-blend-mode: screen; filter: brightness(.52) saturate(.34); }
+.video-studio-scene__orbits { background-image: var(--video-studio-asset-orbits); opacity: .17; mix-blend-mode: screen; filter: brightness(.68) saturate(.42); }
+.video-studio-scene__stars { background-image: var(--video-studio-asset-stars); opacity: .09; mix-blend-mode: screen; filter: brightness(.55) saturate(.3); }
+.video-studio-scene__atmosphere { background-image: var(--video-studio-asset-atmosphere); opacity: .045; filter: brightness(.46) saturate(.25); }
+.video-studio > :not(.video-studio-scene) { position: relative; z-index: 1; }
+.video-studio .workflow-space:before { background: radial-gradient(circle, #31588714 0%, transparent 56%); filter: blur(8px); }
+
+@media (max-width: 560px) {
+  .video-studio-scene__base { opacity: .16; }
+  .video-studio-scene__nebula { opacity: .06; }
+  .video-studio-scene__orbits { opacity: .12; }
+  .video-studio-scene__stars { opacity: .06; }
+  .video-studio-scene__atmosphere { opacity: .03; }
+}
 
 /* Showcase covers retain the original card-art gradient as a visual fallback and place readability above image detail. */
-.media-card .card-art{isolation:isolate;background:linear-gradient(145deg,#111b35,#13244b 48%,#09101f)}.media-card .card-art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:brightness(.68) saturate(.72) contrast(.96);transition:transform .45s var(--ease-cinematic),filter .45s ease}.media-card .card-art:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#01040a52 0%,#06102112 37%,#02050dec 100%),linear-gradient(105deg,#02051058,transparent 54%);pointer-events:none}.media-card:hover .card-art img,.media-card:focus-visible .card-art img{transform:scale(1.045);filter:brightness(.82) saturate(.82) contrast(1.02)}.media-card .card-meta{z-index:1;text-shadow:0 1px 10px #02040a}.media-card .card-meta:before{content:"";position:absolute;inset:-28px -11px -9px;background:linear-gradient(180deg,transparent,#02040af2 52%);z-index:-1;pointer-events:none}.media-card.c3 .card-art img{object-position:50% 50%}@media(max-width:560px){.media-card .card-art img{filter:brightness(.6) saturate(.65)}.media-card:hover .card-art img,.media-card:focus-visible .card-art img{transform:scale(1.025);filter:brightness(.69) saturate(.72)}}
+.media-card .card-art { isolation: isolate; background: linear-gradient(145deg, #111b35, #13244b 48%, #09101f); }
+.media-card .card-art img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; filter: brightness(.68) saturate(.72) contrast(.96); transition: transform .45s var(--ease-cinematic), filter .45s ease; }
+.media-card .card-art:after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, #01040a52 0%, #06102112 37%, #02050dec 100%), linear-gradient(105deg, #02051058, transparent 54%); pointer-events: none; }
+.media-card:hover .card-art img,
+.media-card:focus-visible .card-art img { transform: scale(1.045); filter: brightness(.82) saturate(.82) contrast(1.02); }
+.media-card .card-meta { z-index: 1; text-shadow: 0 1px 10px #02040a; }
+.media-card .card-meta:before { content: ""; position: absolute; inset: -28px -11px -9px; background: linear-gradient(180deg, transparent, #02040af2 52%); z-index: -1; pointer-events: none; }
+.media-card.c3 .card-art img { object-position: 50% 50%; }
+
+@media (max-width: 560px) {
+  .media-card .card-art img { filter: brightness(.6) saturate(.65); }
+  .media-card:hover .card-art img,
+  .media-card:focus-visible .card-art img { transform: scale(1.025); filter: brightness(.69) saturate(.72); }
+}
