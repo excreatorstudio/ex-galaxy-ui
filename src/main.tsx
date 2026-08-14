@@ -5,5 +5,6 @@ import './styles/global.css'
 import './styles/scene-balance.css'
 import './styles/galaxy-asset-scenes.css'
 import './styles/home-layout.css'
+import './styles/mobile-transition.css'
 
 createRoot(document.getElementById('root')!).render(<StrictMode><App /></StrictMode>)

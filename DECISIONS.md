@@ -1,5 +1,11 @@
 # Decisions
 
+## 2026-08-14 - Mobile radial transition and scene-specific scroll policy
+
+Mobile Safe Mode continues to fail closed when Auto capability judges WebGL constrained; it must not silently substitute a diagonal planar sweep. Its CSS fallback now follows the shared transition language: center impact, opposing primary radial shards, secondary up/down spread, and a late stardust tail. The normal 900ms duration and 560ms commit remain shared with desktop; Reduced Motion remains the existing short shard-free path. When optional Canvas is available on mobile, the WebGL Low renderer keeps the DPR 1/six-shard budget and selects seeds covering all four waves.
+
+The document remains immersive and scroll-locked for Loading, Idle, live transitions, desktop Awakened, and module scenes. Only a completed Awakened Homepage at 560px and below enables vertical scrolling, because that layout deliberately becomes a long document flow. The class is applied to the document roots only while that policy is active, the Galaxy scene is fixed and pointer-transparent behind it, and the Command Dock includes `safe-area-inset-bottom` spacing. A focus transition saves the mobile document offset and a return restores it after the overlay clears.
+
 ## 2026-08-14 - Supplied Galaxy asset source is scene-specific
 
 The ten public PNGs are not one global background. Idle owns `galaxy-master-composite` with only sparse image stars and atmosphere support; Awakened and non-Video Module Focus own `galaxy-home-master-composite` plus the eight-layer core-visual mapping; Video Studio owns only the five functional background layers. `GalaxyScene` filters inline asset variables to the active scene and exposes scene/layer metadata in the DOM. Explicit z-index keeps supplied layers above the fallback vignette, while the procedural CSS Galaxy remains low-opacity fallback motion. No application phase, Core activation, Presentation timing, i18n, or layout contract is changed.

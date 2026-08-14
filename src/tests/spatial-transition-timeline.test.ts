@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { sceneTransitionConfig, getTransitionProgress, getTransitionTiming } from '../config/sceneTransitionConfig'
-import { getShardNearPlaneCrossingMs, getSpatialShardCount, getSpatialShardPose, spatialShardSeeds } from '../features/spatial/spatialShardMotion'
+import { getShardNearPlaneCrossingMs, getSpatialShardCount, getSpatialShardPose, getSpatialShardSeeds, spatialShardSeeds } from '../features/spatial/spatialShardMotion'
 import { shouldRenderCssTransitionFragments } from '../features/transition/transitionRenderPolicy'
 
 describe('shared spatial scene transition timeline', () => {
@@ -63,6 +63,13 @@ describe('shared spatial scene transition timeline', () => {
     expect(getSpatialShardCount('balanced', false)).toBe(12)
     expect(getSpatialShardCount('low', false)).toBe(7)
     expect(getSpatialShardCount('high', true)).toBe(6)
+  })
+
+  it('keeps one Mobile Low shard from each radial wave within the six-shard budget', () => {
+    const mobile = getSpatialShardSeeds('low', true)
+    expect(mobile).toHaveLength(6)
+    expect(new Set(mobile.map((seed) => seed.wave))).toEqual(new Set(['center-lead', 'primary-radial', 'secondary-spread', 'stardust-tail']))
+    expect(mobile.filter((seed) => seed.wave === 'primary-radial')).toHaveLength(2)
   })
 
   it('never stacks full CSS shards with the active WebGL shard field', () => {

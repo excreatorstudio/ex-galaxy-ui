@@ -12,6 +12,8 @@ The fixed global transition is **900ms** with scene commit at **560ms / 62.2%**.
 
 When spatial capability is unavailable or an optional Canvas error occurs, the DOM Glass Stardust transition remains the sole fragment renderer; 3D and full DOM shard fields are never intentionally layered together.
 
+On compact mobile, constrained Auto capability may intentionally select the DOM fallback. This is not a planar substitute: it uses the same center-led radial language as WebGL Low, with six shards in four staggered waves (Center Lead, opposing Primary, Secondary up/down, Stardust Tail), a central bloom, and four outward dust paths. It keeps the 900ms transition and 560ms commit; only rendering cost changes. Mobile WebGL Low remains DPR 1 with six shards and no postprocessing. Reduced Motion remains shard-free.
+
 | Quality | Canvas DPR cap | 3D fragments | Motion rule |
 | --- | ---: | ---: | --- |
 | High | 1.75 | 14 | full fixed-density point depth and shards |

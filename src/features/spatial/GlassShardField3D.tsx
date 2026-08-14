@@ -6,7 +6,7 @@ import { getTransitionProgress } from '../../config/sceneTransitionConfig'
 import { useGalaxyStore } from '../../state/useGalaxyStore'
 import type { SceneTransitionKind } from '../../types'
 import { spatialMotion } from './spatialMotion'
-import { getSpatialShardCount, getSpatialShardPose, spatialShardSeeds, type ShardSeed } from './spatialShardMotion'
+import { getSpatialShardPose, getSpatialShardSeeds, type ShardSeed } from './spatialShardMotion'
 
 function makeShardGeometry(scaleX: number, scaleY: number, scaleZ: number) {
   const geometry = new THREE.OctahedronGeometry(.62, 0)
@@ -42,8 +42,8 @@ function SpatialShard({ seed, index, geometries, startedAt, transition, mobile, 
 export function GlassShardField3D({ mobile = false, lowMaterial = false, qualityOverride }: { mobile?: boolean; lowMaterial?: boolean; qualityOverride?: 'high' | 'balanced' | 'low' }) {
   const { sceneTransition, sceneTransitionStartedAt, motionOff, spatialActive, quality } = useGalaxyStore()
   const geometries = useMemo(() => [makeShardGeometry(1.22, .72, .72), makeShardGeometry(.94, 1.05, .62), makeShardGeometry(1.1, .62, .82)], [])
-  const count = getSpatialShardCount(qualityOverride ?? quality, mobile)
+  const seeds = getSpatialShardSeeds(qualityOverride ?? quality, mobile)
   useEffect(() => () => { geometries.forEach((geometry) => geometry.dispose()) }, [geometries])
   if (!sceneTransition || !sceneTransitionStartedAt || motionOff || !spatialActive) return null
-  return <group>{spatialShardSeeds.slice(0, count).map((seed, index) => <SpatialShard key={index} seed={seed} index={index} geometries={geometries} startedAt={sceneTransitionStartedAt} transition={sceneTransition} mobile={mobile} lowMaterial={lowMaterial} />)}</group>
+  return <group>{seeds.map((seed, index) => <SpatialShard key={index} seed={seed} index={index} geometries={geometries} startedAt={sceneTransitionStartedAt} transition={sceneTransition} mobile={mobile} lowMaterial={lowMaterial} />)}</group>
 }

@@ -1,5 +1,13 @@
 # Task Register
 
+## v1.2.0-showcase Mobile transition and Homepage scroll critical fix - Complete locally
+
+- [x] Traced Mobile Auto/Safe Mode to the CSS fallback when a constrained device declines optional WebGL; isolated the remaining diagonal fragments, stardust, and refraction sweep.
+- [x] Replaced the Mobile CSS fallback visual path with six core-origin radial shards, four waves, radial stardust, and a center impact bloom; Reduced Motion remains shard-free.
+- [x] Retained WebGL Low's six-shard/DPR 1 ceiling and selected a seed set that includes Center, Primary, Secondary, and Stardust Tail waves.
+- [x] Added an Awakened-mobile-only scroll policy, safe-area dock spacing, overlay cleanup coverage, and return scroll restoration without changing desktop scroll behavior.
+- [ ] Complete final iPhone hardware review at 390px/430px and redeploy the already-pending local Showcase corrections.
+
 ## v1.2.0-showcase Visual asset source correction - Complete locally
 
 - [x] Re-verified all ten supplied public PNGs, including dimensions, RGB/RGBA channel type, alpha coverage, file paths, and static output size.

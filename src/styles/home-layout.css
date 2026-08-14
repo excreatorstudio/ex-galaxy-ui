@@ -130,6 +130,33 @@
 }
 
 @media(max-width:560px){
+  html.mobile-home-scroll-enabled,
+  body.mobile-home-scroll-enabled,
+  #root.mobile-home-scroll-enabled{
+    height:auto;
+    min-height:100%;
+    overflow-x:hidden;
+    overflow-y:auto;
+  }
+  .app-shell.mobile-home-scroll-enabled{
+    min-height:100dvh;
+    height:auto;
+    overflow-x:hidden;
+    overflow-y:visible;
+    touch-action:pan-y;
+  }
+  .app-shell.mobile-home-scroll-enabled .galaxy-scene{
+    position:fixed;
+    pointer-events:none;
+  }
+  .app-shell.mobile-home-scroll-enabled .interface.home-layout{
+    position:relative;
+    inset:auto;
+    min-height:100dvh;
+    height:auto;
+    overflow:visible;
+    touch-action:pan-y;
+  }
   .home-layout{
     overflow-x:hidden;
     overflow-y:auto;
@@ -185,7 +212,7 @@
     bottom:auto;
     transform:none;
     width:calc(100% - 24px);
-    margin:16px auto 12px;
+    margin:16px auto calc(24px + env(safe-area-inset-bottom));
   }
   .home-layout .bottom-actions button{padding:8px 5px}
   .home-layout footer{
@@ -194,7 +221,7 @@
     right:auto;
     bottom:auto;
     margin:0 18px 20px;
-    padding-bottom:4px;
+    padding-bottom:calc(4px + env(safe-area-inset-bottom));
   }
 }
 

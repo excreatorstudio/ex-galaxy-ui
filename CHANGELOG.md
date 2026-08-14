@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.0-showcase - Mobile transition and Homepage scroll critical fix - 2026-08-14
+
+- Replaced Mobile CSS fallback's remaining diagonal fragments, streaks, and refraction sweep with a lightweight center-origin radial glass/stardust sequence: six shards across Center, Primary, Secondary, and Tail waves plus a centered impact bloom.
+- Kept the shared 900ms / 560ms transition contract and Reduced Motion behavior; Mobile WebGL Low remains DPR 1 with six shards and now represents every radial wave.
+- Enabled document scrolling only for settled 560px-and-below Awakened Homepage flow, with `100dvh`, vertical-pan, safe-area dock clearance, transition locking, overlay cleanup, and Video Studio return-position restoration.
+
 ## 1.2.0-showcase - Visual asset source correction - 2026-08-14
 
 - Re-verified the two master composites and eight transparent core-visual PNGs from `public/assets/galaxy/` and documented their real dimensions, alpha coverage, public URLs, and runtime ownership.

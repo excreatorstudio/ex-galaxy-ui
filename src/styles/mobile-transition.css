@@ -1,0 +1,54 @@
+/* Mobile CSS fallback follows the same core-outward language as the spatial shard field. */
+@media (max-width:560px) {
+  .scene-transition--mobile-radial {
+    perspective:850px;
+    perspective-origin:50% 50%;
+  }
+  .scene-transition--mobile-radial .transition-refraction {
+    display:none;
+  }
+  .scene-transition--mobile-radial .transition-blur {
+    inset:-12%;
+    background:radial-gradient(circle at 50% 50%,#f2f7ff94 0 2%,#b9ceff5c 7%,#8298dd28 20%,transparent 47%);
+    mix-blend-mode:screen;
+    filter:blur(8px);
+    animation:mobileRadialImpact .9s cubic-bezier(.12,.72,.2,1) both;
+  }
+  .scene-transition--mobile-radial .transition-fragments > .transition-fragment--midground,
+  .scene-transition--mobile-radial .transition-fragments > .transition-fragment--background {
+    display:none;
+  }
+  .scene-transition--mobile-radial .shard-position {
+    animation-duration:.62s;
+  }
+  .scene-transition--mobile-radial .shard-position .transition-fragment--foreground {
+    width:clamp(102px,28vw,178px);
+    animation-duration:.62s;
+  }
+  .scene-transition--mobile-radial .shard-position--mobile-stardust-tail .transition-fragment--foreground {
+    width:clamp(62px,18vw,104px);
+    opacity:.76;
+  }
+  .scene-transition--mobile-radial .transition-stardust i {
+    top:50%;
+    left:50%;
+    width:var(--length);
+    height:1px;
+    transform:translate(-50%,-50%) rotate(var(--dust-rotation));
+    transform-origin:0 50%;
+    animation:mobileRadialStardust .42s cubic-bezier(.12,.72,.2,1) var(--delay) both;
+  }
+}
+
+@keyframes mobileRadialImpact {
+  0% { opacity:0; transform:scale(.3); filter:blur(2px); }
+  18% { opacity:.86; transform:scale(.92); filter:blur(4px); }
+  48% { opacity:.38; transform:scale(1.75); filter:blur(12px); }
+  100% { opacity:0; transform:scale(2.45); filter:blur(18px); }
+}
+
+@keyframes mobileRadialStardust {
+  0% { opacity:0; transform:translate(-50%,-50%) rotate(var(--dust-rotation)) scaleX(.18); filter:blur(0); }
+  30% { opacity:.62; }
+  100% { opacity:0; transform:translate(calc(-50% + var(--dust-x)),calc(-50% + var(--dust-y))) rotate(var(--dust-rotation)) scaleX(2.35); filter:blur(2px); }
+}

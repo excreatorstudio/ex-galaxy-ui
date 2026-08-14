@@ -1,5 +1,13 @@
 # Progress
 
+## E.X Galaxy v1.2.0-showcase - Mobile transition and Homepage scroll critical fix - 2026-08-14
+
+**Status: COMPLETE LOCALLY / DEVICE AND PUBLIC REDEPLOY PENDING**
+
+- Identified the Mobile Safe Mode fallback path: constrained mobile Auto mode intentionally declines WebGL, but the CSS fallback still emitted legacy diagonal mid/background shards, stardust, and refraction alongside the newer center shards. Mobile CSS fallback now renders six center-origin radial shards across four staggered waves, four radial stardust tails, and a centered impact bloom; the existing WebGL Low path keeps its six-shard/DPR 1 budget and now includes a tail-wave seed.
+- Added an explicit scene scroll policy. Loading, Idle, all live transitions, Module Focus, and desktop remain locked; only a settled Awakened Homepage at 560px and below enables normal vertical document scrolling. The flow shell now has `min-height:100dvh`, `touch-action:pan-y`, fixed non-interactive Galaxy scenery, safe-area Command Dock spacing, and scroll restoration for a Video Studio return.
+- No Idle assets, desktop transition timing, Homepage layout, asset-scene balance, Video Studio Core behavior, Presentation timing, i18n, or platform logic was changed. Automated checks and browser viewport inspection remain required before public deployment.
+
 ## E.X Galaxy v1.2.0-showcase - Visual asset source correction - 2026-08-14
 
 **Status: COMPLETE LOCALLY / PUBLIC REDEPLOY PENDING**

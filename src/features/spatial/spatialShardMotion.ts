@@ -48,6 +48,12 @@ export function getSpatialShardCount(quality: 'high' | 'balanced' | 'low', mobil
   return quality === 'high' ? 14 : quality === 'balanced' ? 12 : 7
 }
 
+/** Mobile keeps one shard from every radial wave without increasing its six-shard budget. */
+export function getSpatialShardSeeds(quality: 'high' | 'balanced' | 'low', mobile: boolean) {
+  if (mobile) return [spatialShardSeeds[0], spatialShardSeeds[1], spatialShardSeeds[2], spatialShardSeeds[3], spatialShardSeeds[4], spatialShardSeeds[9]]
+  return spatialShardSeeds.slice(0, getSpatialShardCount(quality, false))
+}
+
 export function getShardNearPlaneCrossingMs(seed: ShardSeed) {
   return seed.passThroughMs ?? seed.nearLensMs
 }
